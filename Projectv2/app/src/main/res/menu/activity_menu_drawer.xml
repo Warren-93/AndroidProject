@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_productlist"
+            android:icon="@drawable/ic_filter_vintage_black_24dp"
+            android:title="Products"/>
+
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Gallery" />
+
+        <item
+            android:id="@+id/nav_contactUs"
+            android:icon="@drawable/ic_location_on_black_24dp"
+            android:title="Contact Us" />
+
+        <item
+            android:id="@+id/nav_basket"
+            android:icon="@drawable/ic_shopping_basket_black_24dp"
+            android:title="Basket" />
+
+
+        <!--<item-->
+            <!--android:id="@+id/nav_send"-->
+            <!--android:icon="@drawable/ic_menu_send"-->
+            <!--android:title="Messenger" />-->
+
+    </group>
+
+    <item
+        android:id="@+id/nav_exit"
+        android:icon="@drawable/ic_exit_to_app_black_24dp"
+        android:title="Logout" />
+</menu>
