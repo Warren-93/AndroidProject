@@ -20,6 +20,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         this.productProductArrayList = productProductArrayList;
     }
 
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,6 +28,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         View itemView = inflater.from(parent.getContext()).inflate(R.layout.card, parent, false);
         return new ViewHolder(itemView);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
@@ -37,11 +39,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 .into(holder.imageView);
     }
 
+
     @Override
     public int getItemCount() {
         return productProductArrayList.size();
     }
-
     class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView productName;

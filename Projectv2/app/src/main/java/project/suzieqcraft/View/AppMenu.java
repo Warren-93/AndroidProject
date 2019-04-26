@@ -1,5 +1,6 @@
 package project.suzieqcraft.View;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,20 +9,18 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-;
+import android.view.View;
 import android.widget.TextView;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,10 +30,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
-import project.suzieqcraft.Controller.Connection;
 import project.suzieqcraft.Controller.CustomAdapter;
 import project.suzieqcraft.Model.Product;
-import project.suzieqcraft.Model.User;
 import project.suzieqcraft.R;
 
 public class AppMenu extends AppCompatActivity
@@ -45,6 +42,7 @@ public class AppMenu extends AppCompatActivity
     public RecyclerView recyclerViewer;
     public CustomAdapter adapter;
     private ArrayList<Product> productList = new ArrayList();
+    public CardView cardView;
 
 
     @Override
@@ -56,6 +54,7 @@ public class AppMenu extends AppCompatActivity
 
         displayUserEmail = findViewById( R.id.displayUserEmail );
         displayUsersName = findViewById( R.id.displayUsersName );
+        cardView = findViewById( R.id.cardView );
 
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -68,8 +67,9 @@ public class AppMenu extends AppCompatActivity
 
 
         //Setup Recycler View and get Products from database execution
-        new BackgroundProducts().execute();
         recyclerViewer = findViewById( R.id.recyclerViewer );
+        new BackgroundProducts().execute();
+
 
         //Layout Manager
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
@@ -79,14 +79,23 @@ public class AppMenu extends AppCompatActivity
         adapter = new CustomAdapter(productList);
         recyclerViewer.setAdapter(adapter);
 
-        recyclerViewer.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+        cardView.setOnClickListener( new View.OnClickListener(){
             @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                if(linearLayoutManager.findLastCompletelyVisibleItemPosition() == (productList.size() - 1)){
-                    new BackgroundProducts().execute();
-                }
+            public void onClick(View view){
+   //             startActivity(new Intent(this, Gallery.class));
             }
         });
+
+//
+//        recyclerViewer.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//                if(linearLayoutManager.findLastCompletelyVisibleItemPosition() == (productList.size() - 1)){
+//                    new BackgroundProducts().execute();
+//                }
+//            }
+//        });
     }
 
     protected class BackgroundProducts extends AsyncTask<String, Void, String> {

@@ -23,7 +23,6 @@ public class Product extends ProductArrayList {
         this.productImage = productImage;
     }
 
-
         @JsonProperty("Product_ID")
         public void setProductId(int productId) {
             this.productId = productId;

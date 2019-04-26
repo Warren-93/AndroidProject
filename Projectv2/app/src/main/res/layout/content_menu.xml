@@ -14,11 +14,13 @@
         android:layout_height="685dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:soundEffectsEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:itemCount="6"
+        tools:listitem="6"
         tools:spanCount="5">
 
     </android.support.v7.widget.RecyclerView>

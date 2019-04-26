@@ -25,10 +25,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 //import project.suzieqcraft.View.AppMenu;
-import project.suzieqcraft.Model.Product;
 import project.suzieqcraft.Model.User;
 import project.suzieqcraft.View.AppMenu;
-import project.suzieqcraft.View.test;
 
 
 public class Connection extends AsyncTask<String, Void, String>  {
