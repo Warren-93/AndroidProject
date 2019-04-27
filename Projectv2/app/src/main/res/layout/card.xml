@@ -9,8 +9,7 @@
     android:layout_gravity="center|top"
     android:clickable="true"
     android:elevation="4dp"
-    app:cardBackgroundColor="@color/overlayActionBar"
-    app:cardCornerRadius="14dp">
+    app:cardBackgroundColor="@color/overlayActionBar">
 
     <ImageView
         android:id="@+id/imageView"
