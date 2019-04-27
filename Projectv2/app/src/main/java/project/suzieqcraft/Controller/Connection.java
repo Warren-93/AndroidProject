@@ -129,28 +129,20 @@ public class Connection extends AsyncTask<String, Void, String>  {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-
         try {
-
 
             JSONArray userJSONArray = new JSONArray( result );
             ArrayList<HashMap<String, String>> jsonUserArrayList;
             jsonUserArrayList = new ObjectMapper().readValue( userJSONArray.toString(), ArrayList.class );
             for (HashMap<String, String> userToBeAdded : jsonUserArrayList) {
-//                userList.add( new User(Integer.parseInt( userToBeAdded.get( "0" )), userToBeAdded.get( "" ), userToBeAdded.get(""), userToBeAdded.get( "" )))
-                userList.add( new User( Integer.parseInt( userToBeAdded.get("User_ID")), userToBeAdded.get("First_Name"), userToBeAdded.get("Email")));
+                userList.clear();
+                if (userToBeAdded.containsKey("User_ID")) {
+                    userList.add(new User(Integer.parseInt(userToBeAdded.get("User_ID") != null ? userToBeAdded.get("User_ID") : "0"), userToBeAdded.get("First_Name"), userToBeAdded.get("Email")));
 
-                if(!result.isEmpty())
-                {
-                    Toast.makeText(connContext.getApplicationContext(), userList.toString(), Toast.LENGTH_LONG ).show();
-                    connContext.startActivity( new Intent(connContext.getApplicationContext(), AppMenu.class));
-                }
-                else
-                {
-                    Toast.makeText(connContext.getApplicationContext(), "Unsuccessful", Toast.LENGTH_LONG ).show();
+                } else {
+                    userList.add(new User());
                 }
             }
-
         } catch (JsonParseException e) {
             e.printStackTrace();
         } catch (JSONException e) {

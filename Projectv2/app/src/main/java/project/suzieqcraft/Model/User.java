@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.ArrayList;
 
-public class User extends ArrayList {
+public class User {
 
     protected  int userID;
     protected String name;
