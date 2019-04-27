@@ -80,12 +80,12 @@ public class AppMenu extends AppCompatActivity
         recyclerViewer.setAdapter(adapter);
 
 
-        cardView.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-   //             startActivity(new Intent(this, Gallery.class));
-            }
-        });
+//        cardView.setOnClickListener( new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                startActivity(new Intent(this, Gallery.class));
+//            }
+//        });
 
 //
 //        recyclerViewer.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -118,6 +118,9 @@ public class AppMenu extends AppCompatActivity
                 while ((line = bufferedReader.readLine()) != null) {
                     result += line;
                 }
+                bufferedReader.close();
+                inputStream.close();
+                httpsURLConnection.disconnect();
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();

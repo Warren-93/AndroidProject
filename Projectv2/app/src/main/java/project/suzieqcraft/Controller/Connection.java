@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.json.JSONArray;
@@ -102,41 +104,26 @@ public class Connection extends AsyncTask<String, Void, String>  {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
                 String post_data = URLEncoder.encode("email", "UTF-8")+"="+URLEncoder.encode(email, "UTF-8")+"&"
                                     +URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password, "UTF-8");
+
                 bufferedWriter.write(post_data);
+
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
-                String resultArray = "";
                 String result ="";
                 String line;
                 while((line = bufferedReader.readLine()) != null) {
-                    resultArray += line;
-                    result = "Success";
+                    result += line;
                 }
-
-                JSONArray userJSONArray = new JSONArray(resultArray);
-                ArrayList<HashMap<String, String>> jsonUserArrayList;
-
-                jsonUserArrayList = new ObjectMapper().readValue(userJSONArray.toString(), ArrayList.class);
-                for (HashMap<String, String> userToBeAdded : jsonUserArrayList) {
-//                    userList.add( new User(Integer.parseInt( userToBeAdded.get( "0" )), userToBeAdded.get( "" ), userToBeAdded.get(""), userToBeAdded.get( "" )))
-                    userList.add(new User (Integer.parseInt(userToBeAdded.get("User_ID")), userToBeAdded.get( "First_Name" ), userToBeAdded.get("Email")));
-
-                }
-
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
                 return  result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }return null;
@@ -145,18 +132,36 @@ public class Connection extends AsyncTask<String, Void, String>  {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-            if(result.equals("Success")){
-                Toast.makeText(connContext.getApplicationContext(), result, Toast.LENGTH_SHORT ).show();
-                connContext.startActivity( new Intent(connContext.getApplicationContext(), AppMenu.class));
-                User user = new User();
-                user.getEmail();
-                user.getName();
-            }
-            else{
-                    Toast.makeText(connContext.getApplicationContext(), "Login Unsuccessful", Toast.LENGTH_SHORT ).show();
-                }
 
+        try {
+            JSONArray userJSONArray = new JSONArray( result );
+            ArrayList<HashMap<String, String>> jsonUserArrayList;
+            jsonUserArrayList = new ObjectMapper().readValue( userJSONArray.toString(), ArrayList.class );
+            for (HashMap<String, String> userToBeAdded : jsonUserArrayList) {
+//                userList.add( new User(Integer.parseInt( userToBeAdded.get( "0" )), userToBeAdded.get( "" ), userToBeAdded.get(""), userToBeAdded.get( "" )))
+                userList.add( new User( Integer.parseInt( userToBeAdded.get("User_ID")), userToBeAdded.get("First_Name"), userToBeAdded.get("Email")));
+
+                if(!result.isEmpty())
+                {
+                    Toast.makeText(connContext.getApplicationContext(), userList.toString(), Toast.LENGTH_LONG ).show();
+                    connContext.startActivity( new Intent(connContext.getApplicationContext(), AppMenu.class));
+                }
+                else
+                {
+                    Toast.makeText(connContext.getApplicationContext(), "Unsuccessful", Toast.LENGTH_LONG ).show();
+                }
             }
+
+        } catch (JsonParseException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+}
 
     @Override
     protected void onProgressUpdate(Void... values) {

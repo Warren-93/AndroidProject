@@ -17,7 +17,6 @@ public class User extends ArrayList {
         this.userID = userID;
         this.name = name;
         this.userEmail = userEmail;
-        this.loggedIn = loggedIn;
     }
 
     public User() {
@@ -70,7 +69,5 @@ public class User extends ArrayList {
     public String getName(){
         return this.name;
     }
-
-
 
 }
