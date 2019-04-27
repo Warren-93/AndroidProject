@@ -55,8 +55,8 @@ public class Connection extends AsyncTask<String, Void, String>  {
             String firstname = params[1];
             String surname = params[2];
 //            String username = params[3];
-            String email = params[4];
-            String password = params[5];
+            String email = params[3];
+            String password = params[4];
             URL url;
             try {
                 url = new URL(register_url);
@@ -67,9 +67,8 @@ public class Connection extends AsyncTask<String, Void, String>  {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data =
-                        URLEncoder.encode("firstname", "UTF-8")+"="+URLEncoder.encode(firstname, "UTF-8")+"&"
-                                + URLEncoder.encode("surname", "UTF-8")+"="+URLEncoder.encode(surname, "UTF-8")+"&"
-//                                + URLEncoder.encode("username", "UTF-8")+"="+URLEncoder.encode(username, "UTF-8")+"&"
+                                URLEncoder.encode("firstname", "UTF-8")+"="+URLEncoder.encode(firstname, "UTF-8")+"&"
+                                +URLEncoder.encode("surname", "UTF-8")+"="+URLEncoder.encode(surname, "UTF-8")+"&"
                                 +URLEncoder.encode("email", "UTF-8")+"="+URLEncoder.encode(email, "UTF-8")+"&"
                                 +URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password, "UTF-8");
                 bufferedWriter.write(post_data);
@@ -107,9 +106,7 @@ public class Connection extends AsyncTask<String, Void, String>  {
 
                 String post_data = URLEncoder.encode("email", "UTF-8")+"="+URLEncoder.encode(email, "UTF-8")+"&"
                                     +URLEncoder.encode("password", "UTF-8")+"="+URLEncoder.encode(password, "UTF-8");
-
                 bufferedWriter.write(post_data);
-
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
@@ -134,6 +131,8 @@ public class Connection extends AsyncTask<String, Void, String>  {
         super.onPostExecute(result);
 
         try {
+
+
             JSONArray userJSONArray = new JSONArray( result );
             ArrayList<HashMap<String, String>> jsonUserArrayList;
             jsonUserArrayList = new ObjectMapper().readValue( userJSONArray.toString(), ArrayList.class );

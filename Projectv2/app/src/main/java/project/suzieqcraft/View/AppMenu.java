@@ -75,10 +75,6 @@ public class AppMenu extends AppCompatActivity
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
         recyclerViewer.setLayoutManager( linearLayoutManager );
 
-        //Fill Adapter with array list of products
-        adapter = new CustomAdapter(productList);
-        recyclerViewer.setAdapter(adapter);
-
 
 //        cardView.setOnClickListener( new View.OnClickListener(){
 //            @Override
@@ -87,15 +83,7 @@ public class AppMenu extends AppCompatActivity
 //            }
 //        });
 
-//
-//        recyclerViewer.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-//                if(linearLayoutManager.findLastCompletelyVisibleItemPosition() == (productList.size() - 1)){
-//                    new BackgroundProducts().execute();
-//                }
-//            }
-//        });
+
     }
 
     protected class BackgroundProducts extends AsyncTask<String, Void, String> {
