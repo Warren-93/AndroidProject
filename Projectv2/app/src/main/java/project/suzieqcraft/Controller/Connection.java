@@ -138,7 +138,7 @@ public class Connection extends AsyncTask<String, Void, String>  {
                 userList.clear();
                 if (userToBeAdded.containsKey("User_ID")) {
                     userList.add(new User(Integer.parseInt(userToBeAdded.get("User_ID") != null ? userToBeAdded.get("User_ID") : "0"), userToBeAdded.get("First_Name"), userToBeAdded.get("Email")));
-
+                    String =
                 } else {
                     userList.add(new User());
                 }
