@@ -12,14 +12,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import project.suzieqcraft.R;
 
-public class ContactUs extends FragmentActivity implements OnMapReadyCallback {
+public class Location extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_contact_us );
+        setContentView( R.layout.activity_location );
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById( R.id.map );

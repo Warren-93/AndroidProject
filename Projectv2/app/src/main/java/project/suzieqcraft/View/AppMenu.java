@@ -37,7 +37,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 import project.suzieqcraft.Controller.CustomAdapter;
 import project.suzieqcraft.Model.Product;
-import project.suzieqcraft.View.Gallery;
 import project.suzieqcraft.R;
 
 public class AppMenu extends AppCompatActivity
@@ -207,7 +206,7 @@ public class AppMenu extends AppCompatActivity
 //        } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_contactUs) {
-            startActivity( new Intent( this, ContactUs.class ) );
+            startActivity( new Intent( this, Location.class ) );
 
         } else if (id == R.id.nav_exit) {
             startActivity( new Intent( this, Home.class ) );

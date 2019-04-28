@@ -3,19 +3,14 @@ package project.suzieqcraft.View;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,20 +19,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import javax.net.ssl.HttpsURLConnection;
-
 import project.suzieqcraft.Controller.ImageAdapter;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 
 public class Gallery extends AppCompatActivity {
 
-    RecyclerView recyclerGalleryView;
-    ImageAdapter adapter;
-    ArrayList<Image> imageList = new ArrayList();
-    ImageView galleryImage;
-    CardView galleryCardView;
+        RecyclerView recyclerGalleryView;
+        ImageAdapter adapter;
+        ArrayList<Image> imageList = new ArrayList();
+        ImageView galleryImage;
+//    CardView galleryCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +108,6 @@ public class Gallery extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

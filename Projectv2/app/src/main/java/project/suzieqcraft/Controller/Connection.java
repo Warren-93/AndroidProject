@@ -141,13 +141,15 @@ public class Connection extends AsyncTask<String, Void, String> {
                 } else {
                     userList.add( new User() );
                 }
+                if (userList.contains( "User_ID" )) {
+                    Toast.makeText( connContext.getApplicationContext(), "Login Success", Toast.LENGTH_SHORT ).show();
+                    connContext.startActivity( new Intent( connContext.getApplicationContext(), AppMenu.class ) );
+                } else {
+                    Toast.makeText( connContext.getApplicationContext(), "Login Unsuccessful", Toast.LENGTH_SHORT ).show();
+                }
+
             }
-            if (userList.contains( "User_ID" )) {
-                Toast.makeText( connContext.getApplicationContext(), "Login Success", Toast.LENGTH_SHORT ).show();
-                connContext.startActivity( new Intent( connContext.getApplicationContext(), AppMenu.class ) );
-            } else {
-                Toast.makeText( connContext.getApplicationContext(), "Login Unsuccessful", Toast.LENGTH_SHORT ).show();
-            }
+
 
         } catch (JsonParseException e) {
             e.printStackTrace();
