@@ -9,7 +9,7 @@ public class ProductArrayList extends ArrayList<Product> {
 
     public ArrayList productList;
 
-    public ProductArrayList(){
+    public ProductArrayList() {
         super();
     }
 

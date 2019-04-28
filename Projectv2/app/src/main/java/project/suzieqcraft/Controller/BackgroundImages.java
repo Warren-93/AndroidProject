@@ -1,9 +1,7 @@
 //package project.suzieqcraft.Controller;
 //
-//import android.content.Context;
 //import android.os.AsyncTask;
 //import android.support.v7.widget.RecyclerView;
-//import android.widget.TextView;
 //
 //import com.fasterxml.jackson.core.JsonParseException;
 //import com.fasterxml.jackson.databind.JsonMappingException;
@@ -23,32 +21,27 @@
 //
 //import javax.net.ssl.HttpsURLConnection;
 //
-//import project.suzieqcraft.Model.Product;
+//import project.suzieqcraft.Model.Image;
+
+//public class BackgroundImages extends AsyncTask<String, Void, String> {
 //
-//public class BackgroundProducts extends AsyncTask<String, Void, String> {
-//    private String productjson_url;
+//    private String imagejson_url;
 //
 //
 //    public RecyclerView recyclerViewer;
-//    public CustomAdapter adapter;
-//    private ArrayList<Product> productList = new ArrayList();
+//    public ImageAdapter adapter;
+//    private ArrayList<Image> imageList = new ArrayList();
 //
-//    private Context productContext;
-//
-//
-//    public BackgroundProducts(Context ctx) {
-//        productContext = ctx;
-//    }
 //
 //    @Override
 //    protected void onPreExecute() {
-//        productjson_url = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getProducts.php";
+//        imagejson_url = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getProducts.php";
 //    }
 //
 //    @Override
 //    protected String doInBackground(String... strings) {
 //        try {
-//            URL url = new URL( productjson_url );
+//            URL url = new URL( imagejson_url );
 //            HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
 //            InputStream inputStream = httpsURLConnection.getInputStream();
 //            BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
@@ -57,9 +50,6 @@
 //            while ((line = bufferedReader.readLine()) != null) {
 //                result += line;
 //            }
-//            bufferedReader.close();
-//            inputStream.close();
-//            httpsURLConnection.disconnect();
 //            return result;
 //        } catch (MalformedURLException e) {
 //            e.printStackTrace();
@@ -84,10 +74,10 @@
 //
 //            jsonObjectArrayList = new ObjectMapper().readValue( products.toString(), ArrayList.class );
 //
-//            for (HashMap<String, String> productToBeAdded : jsonObjectArrayList) {
-//                productList.add( new Product( Integer.parseInt( productToBeAdded.get( "0" ) ), productToBeAdded.get( "Product_Type" ), productToBeAdded.get( "Product_Image" ) ) );
+//            for (HashMap<String, String> imageToBeAdded : jsonObjectArrayList) {
+//                imageList.add( new Image( Integer.parseInt( imageToBeAdded.get( "0" ) ), imageToBeAdded.get( "Product_Type" ), imageToBeAdded.get( "Product_Image" ) ) );
 //            }
-//            adapter = new CustomAdapter( productList );
+//            adapter = new ImageAdapter(imageList);
 //            recyclerViewer.setAdapter( adapter );
 //
 //        } catch (JSONException e) {
@@ -102,5 +92,3 @@
 //
 //    }
 //}
-//
-

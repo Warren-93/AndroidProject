@@ -22,9 +22,9 @@ public class Login extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
 
-        edtLogEmail = findViewById(R.id.edtLogEmail);
-        logPassword = findViewById(R.id.logPassword);
-        logBtn = findViewById(R.id.logBtn);
+        edtLogEmail = findViewById( R.id.edtLogEmail );
+        logPassword = findViewById( R.id.logPassword );
+        logBtn = findViewById( R.id.logBtn );
 
         logBtn.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -49,10 +49,10 @@ public class Login extends AppCompatActivity {
                     Toast.makeText( getApplicationContext(), "Password too short, Password must be at least 8 characters long", Toast.LENGTH_SHORT ).show();
                     return;
                 }
-                Connection conn = new Connection(Login.this);
-                conn.execute(type, email, password);
+                Connection conn = new Connection( Login.this );
+                conn.execute( type, email, password );
 
             }
-        });
+        } );
     }
 }

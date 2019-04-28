@@ -62,9 +62,9 @@ public class Register extends AppCompatActivity {
                     Toast.makeText( getApplicationContext(), "Password too short, Password must be at least 8 characters long", Toast.LENGTH_SHORT ).show();
                     return;
                 }
-                Connection conn = new Connection( Register.this);
-                conn.execute(type, firstname, surname, email, password);
+                Connection conn = new Connection( Register.this );
+                conn.execute( type, firstname, surname, email, password );
             }
-        });
+        } );
     }
 }

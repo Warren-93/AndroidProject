@@ -6,11 +6,10 @@ import java.util.ArrayList;
 
 public class User {
 
-    protected  int userID;
+    protected int userID;
     protected String name;
     protected String userEmail;
     protected boolean loggedIn;
-
 
 
     public User(int userID, String name, String userEmail) {
@@ -22,17 +21,17 @@ public class User {
     public User() {
     }
 
-    public boolean setLoggedIn(){
+    public boolean setLoggedIn() {
         this.loggedIn = true;
         return loggedIn;
     }
 
-    public boolean setLoggedOut(boolean loggedIn){
+    public boolean setLoggedOut(boolean loggedIn) {
         this.loggedIn = false;
         return loggedIn;
     }
 
-    public boolean isLoggedIn(){
+    public boolean isLoggedIn() {
         return this.loggedIn;
     }
 
@@ -48,25 +47,25 @@ public class User {
     }
 
     @JsonProperty("Email")
-    public String setEmail(String userEmail){
+    public String setEmail(String userEmail) {
         this.userEmail = userEmail;
         return this.userEmail;
     }
 
     @JsonProperty("Email")
-    public String getEmail(){
+    public String getEmail() {
         return this.userEmail;
     }
 
 
     @JsonProperty("Product_ID")
-    public String setName(String name){
+    public String setName(String name) {
         this.name = name;
         return this.name;
     }
 
     @JsonProperty("First_Name")
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 

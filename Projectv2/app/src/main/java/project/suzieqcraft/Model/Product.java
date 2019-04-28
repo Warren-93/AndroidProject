@@ -9,9 +9,9 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product extends ProductArrayList {
 
-    int     productId;
-    String  productType;
-    String  productImage;
+    int productId;
+    String productType;
+    String productImage;
 //    String  productPrice;
 
     public Product() {
@@ -23,35 +23,35 @@ public class Product extends ProductArrayList {
         this.productImage = productImage;
     }
 
-        @JsonProperty("Product_ID")
-        public void setProductId(int productId) {
-            this.productId = productId;
-        }
+    @JsonProperty("Product_ID")
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
 
-        @JsonProperty("Product_ID")
-        public int getProductId() {
-            return productId;
-        }
+    @JsonProperty("Product_ID")
+    public int getProductId() {
+        return productId;
+    }
 
-        @JsonProperty("Product_Type")
-        public void setProductType(String productType) {
-            this.productType = productType;
-        }
+    @JsonProperty("Product_Type")
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
 
-        @JsonProperty("Product_Type")
-        public String getProductType() {
-            return productType;
-        }
+    @JsonProperty("Product_Type")
+    public String getProductType() {
+        return productType;
+    }
 
-        @JsonProperty("Product_Image")
-        public void setProductImage(String productImage) {
-            this.productImage = productImage;
-        }
+    @JsonProperty("Product_Image")
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
 
-        @JsonProperty("Product_Image")
-        public String getProductImage() {
-            return productImage;
-        }
+    @JsonProperty("Product_Image")
+    public String getProductImage() {
+        return productImage;
+    }
 
 
 }

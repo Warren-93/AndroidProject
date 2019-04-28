@@ -3,7 +3,6 @@ package project.suzieqcraft.View;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,13 +13,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.TextView;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,9 +31,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import javax.net.ssl.HttpsURLConnection;
+
+
 import project.suzieqcraft.Controller.CustomAdapter;
 import project.suzieqcraft.Model.Product;
+import project.suzieqcraft.View.Gallery;
 import project.suzieqcraft.R;
 
 public class AppMenu extends AppCompatActivity
@@ -79,7 +85,7 @@ public class AppMenu extends AppCompatActivity
 //        cardView.setOnClickListener( new View.OnClickListener(){
 //            @Override
 //            public void onClick(View view){
-//                startActivity(new Intent(this, Gallery.class));
+//                startActivity(new Intent(AppMenu.this, Gallery.class));
 //            }
 //        });
 
@@ -128,16 +134,16 @@ public class AppMenu extends AppCompatActivity
             super.onPostExecute( result );
 
             try {
-                JSONArray products = new JSONArray(result);
+                JSONArray products = new JSONArray( result );
                 ArrayList<HashMap<String, String>> jsonObjectArrayList;
 
-                jsonObjectArrayList = new ObjectMapper().readValue(products.toString(), ArrayList.class);
+                jsonObjectArrayList = new ObjectMapper().readValue( products.toString(), ArrayList.class );
 
                 for (HashMap<String, String> productToBeAdded : jsonObjectArrayList) {
-                    productList.add(new Product(Integer.parseInt(productToBeAdded.get("0")), productToBeAdded.get( "Product_Type" ), productToBeAdded.get("Product_Image")));
+                    productList.add( new Product( Integer.parseInt( productToBeAdded.get( "0" ) ), productToBeAdded.get( "Product_Type" ), productToBeAdded.get( "Product_Image" ) ) );
                 }
-                adapter = new CustomAdapter(productList);
-                recyclerViewer.setAdapter(adapter);
+                adapter = new CustomAdapter( productList );
+                recyclerViewer.setAdapter( adapter );
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -191,16 +197,20 @@ public class AppMenu extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_productlist) {
+            startActivity( new Intent( this, AppMenu.class ) );
 
         } else if (id == R.id.nav_gallery) {
+            startActivity( new Intent( this, Gallery.class ) );
 
         } else if (id == R.id.nav_basket) {
 
 //        } else if (id == R.id.nav_send) {
 
         } else if (id == R.id.nav_contactUs) {
+            startActivity( new Intent( this, ContactUs.class ) );
 
         } else if (id == R.id.nav_exit) {
+            startActivity( new Intent( this, Home.class ) );
 
         }
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
