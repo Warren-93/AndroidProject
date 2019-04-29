@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -49,7 +50,11 @@ public class AppMenu extends AppCompatActivity
     public CustomAdapter adapter;
     private ArrayList<Product> productList = new ArrayList();
     public CardView cardView;
+    public ImageView imageView;
 
+    Product product = new Product();
+
+    String type = product.getProductType().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,8 @@ public class AppMenu extends AppCompatActivity
         displayUserEmail = findViewById( R.id.displayUserEmail );
         displayUsersName = findViewById( R.id.displayUsersName );
         cardView = findViewById( R.id.cardView );
+        imageView = findViewById( R.id.imageView );
+
 
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -82,11 +89,10 @@ public class AppMenu extends AppCompatActivity
         recyclerViewer.setLayoutManager( linearLayoutManager );
 
 
-
-        cardView.setOnClickListener( new View.OnClickListener(){
+        imageView.setOnClickListener( new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                cardView.getContext().startActivity(new Intent(AppMenu.this, Gallery.class));
+                startActivity( new Intent( AppMenu.this, Gallery.class ) );
             }
         });
 

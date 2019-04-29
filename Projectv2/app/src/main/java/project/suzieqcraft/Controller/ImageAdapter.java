@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
+import project.suzieqcraft.View.Gallery;
 
 
 import static com.bumptech.glide.Glide.with;
@@ -54,6 +55,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
             imageGalleryView = itemView.findViewById( R.id.galleryImage );
         }
     }
+
+
 
 
 }

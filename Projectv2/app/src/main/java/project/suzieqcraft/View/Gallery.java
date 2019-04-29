@@ -1,5 +1,6 @@
 package project.suzieqcraft.View;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,6 +36,7 @@ public class Gallery extends AppCompatActivity {
         ImageView galleryImage;
         CardView galleryCardView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -48,15 +52,25 @@ public class Gallery extends AppCompatActivity {
         final GridLayoutManager gridLayoutManager = new GridLayoutManager( this, 2 );
         recyclerGalleryView.setLayoutManager( gridLayoutManager );
 
+
+
+
+//
+//        type =
+//
+//        BackgroundImages backgroundImages = new BackgroundImages( Gallery.this );
+//        backgroundImages.execute( type );
+
     }
 
-    protected class BackgroundImages extends AsyncTask<String, Void, String> {
+    public class BackgroundImages extends AsyncTask<String, Void, String> {
 
-        private String imagejson_url;
+        private Context backgroundImage;
+
 
         @Override
         protected void onPreExecute() {
-            imagejson_url = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
+            Toast.makeText( backgroundImage.getApplicationContext(), "Waiting...", Toast.LENGTH_LONG ).show();
         }
 
         @Override
