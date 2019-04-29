@@ -8,16 +8,22 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerGalleryView"
-        android:layout_width="389dp"
-        android:layout_height="708dp"
+        android:layout_width="395dp"
+        android:layout_height="538dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layoutManager="GridLayoutManager"
         tools:spanCount="2" />
+
+    <Button
+        android:id="@+id/fullscreentest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        tools:layout_editor_absoluteX="132dp"
+        tools:layout_editor_absoluteY="609dp" />
 </android.support.constraint.ConstraintLayout>

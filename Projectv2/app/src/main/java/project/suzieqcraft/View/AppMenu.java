@@ -52,9 +52,6 @@ public class AppMenu extends AppCompatActivity
     public CardView cardView;
     public ImageView imageView;
 
-    Product product = new Product();
-
-    String type = product.getProductType().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,23 +75,16 @@ public class AppMenu extends AppCompatActivity
         NavigationView navigationView = findViewById( R.id.nav_view );
         navigationView.setNavigationItemSelectedListener( this );
 
-
         //Setup Recycler View and get Products from database execution
         recyclerViewer = findViewById( R.id.recyclerViewer );
         new BackgroundProducts().execute();
-
 
         //Layout Manager
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
         recyclerViewer.setLayoutManager( linearLayoutManager );
 
 
-        imageView.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        } );
 
     }
 
