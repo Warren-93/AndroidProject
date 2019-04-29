@@ -3,6 +3,7 @@ package project.suzieqcraft.View;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
@@ -30,13 +31,14 @@ public class Gallery extends AppCompatActivity {
         ImageAdapter adapter;
         ArrayList<Image> imageList = new ArrayList();
         ImageView galleryImage;
-//    CardView galleryCardView;
+        CardView galleryCardView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_gallery );
         galleryImage = findViewById( R.id.galleryImage );
+        galleryCardView = findViewById( R.id.galleryCardView );
 
         //Setup Recycler View and get Gallery from database execution
         recyclerGalleryView = findViewById( R.id.recyclerGalleryView );
@@ -54,26 +56,50 @@ public class Gallery extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            imagejson_url = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getProducts.php";
+            imagejson_url = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
         }
 
         @Override
-        protected String doInBackground(String... strings) {
-            try {
-                URL url = new URL( imagejson_url );
-                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-                InputStream inputStream = httpsURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
-                String result = "";
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
+        protected String doInBackground(String... params) {
+            String type = params[0];
+            String galleryURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
+            String galleryProductURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php?="+type;
+            if(type.equals("gallery")) {
+                URL url;
+                try {
+                    url = new URL( galleryURL );
+                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    InputStream inputStream = httpsURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    String result = "";
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        result += line;
+                    }
+                    return result;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                return result;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
+            }else if (type.equals( "product" )){
+                URL url;
+                try {
+                    url = new URL( galleryProductURL );
+                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    InputStream inputStream = httpsURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    String result = "";
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        result += line;
+                    }
+                    return result;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             return null;
         }
@@ -94,10 +120,12 @@ public class Gallery extends AppCompatActivity {
                 jsonObjectArrayList = new ObjectMapper().readValue( images.toString(), ArrayList.class );
 
                 for (HashMap<String, String> imageToBeAdded : jsonObjectArrayList) {
-                    imageList.add( new Image( Integer.parseInt( imageToBeAdded.get( "0" ) ), imageToBeAdded.get( "Product_Type" ), imageToBeAdded.get( "Product_Image" ) ) );
+                    imageList.add( new Image( Integer.parseInt( imageToBeAdded.get( "0" ) ), imageToBeAdded.get( "Gallery_Image" ), imageToBeAdded.get( "Product_Type" ) ) );
                 }
+
                 adapter = new ImageAdapter( imageList );
                 recyclerGalleryView.setAdapter( adapter );
+                String test ="";
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import android.view.View;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -81,13 +82,13 @@ public class AppMenu extends AppCompatActivity
         recyclerViewer.setLayoutManager( linearLayoutManager );
 
 
-//        cardView.setOnClickListener( new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                startActivity(new Intent(AppMenu.this, Gallery.class));
-//            }
-//        });
 
+        cardView.setOnClickListener( new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                cardView.getContext().startActivity(new Intent(AppMenu.this, Gallery.class));
+            }
+        });
 
     }
 

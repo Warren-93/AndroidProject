@@ -46,13 +46,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
 
     class ImageViewHolder extends RecyclerView.ViewHolder {
 
-
         public ImageView imageGalleryView;
 
         private ImageViewHolder(View itemView) {
             super( itemView );
 
-//            productName = itemView.findViewById( R.id.productName );
             imageGalleryView = itemView.findViewById( R.id.galleryImage );
         }
     }

@@ -9,6 +9,7 @@
     android:layout_gravity="center|top"
     android:clickable="true"
     android:elevation="4dp"
+    android:onClick="cardClick"
     app:cardBackgroundColor="@color/overlayActionBar">
 
     <ImageView
@@ -28,7 +29,6 @@
         android:background="@color/overlayBackground"
         android:clickable="true"
         android:gravity="center"
-        android:text="Name of Product"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
 
