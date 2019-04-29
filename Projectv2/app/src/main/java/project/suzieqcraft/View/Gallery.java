@@ -60,15 +60,25 @@ public class Gallery extends AppCompatActivity {
         final GridLayoutManager gridLayoutManager = new GridLayoutManager( this, 2 );
         recyclerGalleryView.setLayoutManager( gridLayoutManager );
 
-       fullscreentest = findViewById( R.id.fullscreentest );
-
-
-        fullscreentest.setOnClickListener( new View.OnClickListener() {
+        recyclerGalleryView.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity( new Intent(Gallery.this, Fullscreen.class ));
             }
-        });
+        } );
+
+
+//       fullscreentest = findViewById( R.id.fullscreentest );
+
+
+
+
+//        fullscreentest.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity( new Intent(Gallery.this, Fullscreen.class ));
+//            }
+//        });
     }
 
     public class BackgroundImages extends AsyncTask<String, Void, String> {
