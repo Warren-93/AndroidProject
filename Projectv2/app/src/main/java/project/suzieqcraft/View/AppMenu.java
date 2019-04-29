@@ -89,12 +89,12 @@ public class AppMenu extends AppCompatActivity
         recyclerViewer.setLayoutManager( linearLayoutManager );
 
 
-        imageView.setOnClickListener( new View.OnClickListener(){
+        imageView.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                startActivity( new Intent( AppMenu.this, Gallery.class ) );
+            public void onClick(View view) {
+
             }
-        });
+        } );
 
     }
 

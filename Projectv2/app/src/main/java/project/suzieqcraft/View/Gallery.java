@@ -26,6 +26,7 @@ import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
 import project.suzieqcraft.Controller.ImageAdapter;
 import project.suzieqcraft.Model.Image;
+import project.suzieqcraft.View.AppMenu;
 import project.suzieqcraft.R;
 
 public class Gallery extends AppCompatActivity {
@@ -35,6 +36,8 @@ public class Gallery extends AppCompatActivity {
         ArrayList<Image> imageList = new ArrayList();
         ImageView galleryImage;
         CardView galleryCardView;
+
+        String type ="";
 
 
     @Override
@@ -54,23 +57,14 @@ public class Gallery extends AppCompatActivity {
 
 
 
-
-//
-//        type =
-//
-//        BackgroundImages backgroundImages = new BackgroundImages( Gallery.this );
-//        backgroundImages.execute( type );
-
     }
 
     public class BackgroundImages extends AsyncTask<String, Void, String> {
 
-        private Context backgroundImage;
-
 
         @Override
         protected void onPreExecute() {
-            Toast.makeText( backgroundImage.getApplicationContext(), "Waiting...", Toast.LENGTH_LONG ).show();
+
         }
 
         @Override

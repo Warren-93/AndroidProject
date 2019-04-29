@@ -52,6 +52,6 @@ public class Login extends AppCompatActivity {
                 Connection conn = new Connection( Login.this );
                 conn.execute( type, email, password );
             }
-        });
+        } );
     }
 }
