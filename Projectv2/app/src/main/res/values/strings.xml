@@ -95,9 +95,10 @@
     <string name="todo">TODO</string>
     <string name="title_activity_contact_us">Map</string>
 
-    <string name="title_activity_image_fullscreen">ImageFullscreen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="title_activity_fullscreen">Fullscreen</string>
+
+
 </resources>

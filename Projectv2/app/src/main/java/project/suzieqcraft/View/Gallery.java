@@ -28,7 +28,8 @@ import java.util.HashMap;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import project.suzieqcraft.Controller.ImageAdapter;
+import project.suzieqcraft.Adapters.ImageAdapter;
+
 import project.suzieqcraft.Interfaces.IGallery;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
@@ -55,29 +56,16 @@ public class Gallery extends AppCompatActivity implements IGallery {
         recyclerGalleryView.setLayoutManager(new GridLayoutManager(this, 2));
         new BackgroundImages().execute();
 
-        //Layout Manager
-//        recyclerGalleryView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(Gallery.this, Fullscreen.class));
-//            }
-//        });
-
-
-// fullscreentest = findViewById( R.id.fullscreentest );
-
-
-// fullscreentest.setOnClickListener( new View.OnClickListener() {
-// @Override
-// public void onClick(View v) {
-// startActivity( new Intent(Gallery.this, Fullscreen.class ));
-// }
-// });
     }
+
     @Override
     public void onClick(View view, int position) {
         startActivity(new Intent(Gallery.this, Fullscreen.class));
+        imageList.get( position );
     }
+
+
+
 
     public class BackgroundImages extends AsyncTask<String, Void, String> {
 
@@ -89,8 +77,8 @@ public class Gallery extends AppCompatActivity implements IGallery {
         @Override
         protected String doInBackground(String... params) {
             String galleryURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
-// String galleryProductURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php";
-// if (type.equals( "gallery" )) {
+            // String galleryProductURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php";
+            // if (type.equals( "gallery" )) {
             URL url;
             try {
                 url = new URL(galleryURL);
@@ -108,25 +96,27 @@ public class Gallery extends AppCompatActivity implements IGallery {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-// } else if (type.equals( "product" )) {
-// URL url;
-// try {
-// url = new URL( galleryProductURL );
-// HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-// InputStream inputStream = httpsURLConnection.getInputStream();
-// BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
-// String result = "";
-// String line;
-// while ((line = bufferedReader.readLine()) != null) {
-// result += line;
-// }
-// return result;
-// } catch (MalformedURLException e) {
-// e.printStackTrace();
-// } catch (IOException e) {
-// e.printStackTrace();
-// }
-// }
+//        } else if(type.equals("product"))
+//
+//        {
+//            URL url;
+//            try {
+//                url = new URL( galleryProductURL );
+//                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+//                InputStream inputStream = httpsURLConnection.getInputStream();
+//                BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+//                String result = "";
+//                String line;
+//                while ((line = bufferedReader.readLine()) != null) {
+//                    result += line;
+//                }
+//                return result;
+//            } catch (MalformedURLException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
             return null;
         }
 

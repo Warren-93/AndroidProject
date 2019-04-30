@@ -1,4 +1,4 @@
-package project.suzieqcraft.Controller;
+package project.suzieqcraft.Adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

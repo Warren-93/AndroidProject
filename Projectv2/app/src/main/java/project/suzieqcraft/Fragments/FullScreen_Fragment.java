@@ -1,6 +1,11 @@
 package project.suzieqcraft.Fragments;
 
-public class FullScreen_Fragment {
+
+
+import android.support.v4.app.FragmentActivity;
+
+public class FullScreen_Fragment extends FragmentActivity {
+
 
 
 }
