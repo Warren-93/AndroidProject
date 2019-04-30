@@ -4,6 +4,6 @@ import android.app.Activity;
 
 public class Fullscreen extends Activity {
 
-
+        
 
 }
