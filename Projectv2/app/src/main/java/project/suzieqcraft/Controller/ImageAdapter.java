@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import project.suzieqcraft.Interfaces.IGallery;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 
@@ -17,6 +18,7 @@ import static com.bumptech.glide.Glide.with;
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
     public ArrayList<Image> imageArrayList;
+    IGallery listener;
 
     public ImageAdapter(ArrayList<Image> imageArrayList) {
         this.imageArrayList = imageArrayList;
@@ -37,6 +39,8 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         with( holder.itemView.getContext() )
                 .load( image.getGalleryImage() )
                 .into( holder.imageGalleryView );
+
+
     }
 
     @Override
@@ -44,14 +48,19 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         return imageArrayList.size();
     }
 
-    class ImageViewHolder extends RecyclerView.ViewHolder {
+    class ImageViewHolder extends RecyclerView.ViewHolder implements IGallery {
 
         public ImageView imageGalleryView;
 
         private ImageViewHolder(View itemView) {
             super( itemView );
-
             imageGalleryView = itemView.findViewById( R.id.galleryImage );
+            itemView.setOnClickListener( (View.OnClickListener) this );
+        }
+
+        @Override
+        public void onClick(View view, int position) {
+            listener.onClick( view, getAdapterPosition() );
         }
     }
 
