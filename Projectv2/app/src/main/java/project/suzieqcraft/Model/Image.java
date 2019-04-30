@@ -7,11 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Image extends ImageArrayList {
 
-
     int galleryId;
     String productType;
     String galleryImage;
-
 
     public Image() {
     }

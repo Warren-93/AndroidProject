@@ -27,27 +27,26 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
 
     @NonNull
     @Override
-    public FullscreenHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public FullscreenHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         LayoutInflater inflater = LayoutInflater.from( parent.getContext() );
         View itemView = inflater.from( parent.getContext() ).inflate( R.layout.fullscreen_image, parent, false );
         return new FullscreenHolder( itemView );
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FullscreenHolder fullscreenHolder, int i) {
+    public void onBindViewHolder(@NonNull FullscreenHolder holder, int position) {
         Image image = imageArrayList.get(position);
         with(holder.itemView.getContext())
                 .load(image.getGalleryImage())
-                .into(holder.imageGalleryView);
+                .into(holder.fullsizeImage);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return imageArrayList.size();
     }
 
     class FullscreenHolder extends RecyclerView.ViewHolder {
-
 
         public ImageView fullsizeImage;
 

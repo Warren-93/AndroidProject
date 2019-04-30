@@ -33,6 +33,8 @@ public class Fullscreen extends FragmentActivity {
     fullscreenViewer.setAdapter( fullscreenAdapter );
     final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
     fullscreenViewer.setLayoutManager( linearLayoutManager );
+    linearLayoutManager.setOrientation( linearLayoutManager.VERTICAL );
+
 
 
     }
