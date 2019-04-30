@@ -5,13 +5,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -24,7 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 //import project.suzieqcraft.View.AppMenu;
 import project.suzieqcraft.Model.User;
@@ -137,36 +129,6 @@ public class Connection extends AsyncTask<String, Void, String> {
         }else{
             Toast.makeText( connContext.getApplicationContext(), "Login UnSuccessful", Toast.LENGTH_SHORT ).show();
         }
-
- //        try {
-//            JSONArray userJSONArray = new JSONArray( result );
-//            ArrayList<HashMap<String, String>> jsonUserArrayList;
-//            jsonUserArrayList = new ObjectMapper().readValue( userJSONArray.toString(), ArrayList.class );
-//            for (HashMap<String, String> userToBeAdded : jsonUserArrayList) {
-//                userList.clear();
-//                if (userToBeAdded.containsKey( "User_ID" )) {
-//                    userList.add( new User( Integer.parseInt( userToBeAdded.get( "User_ID" ) != null ? userToBeAdded.get( "User_ID" ) : "0" ), userToBeAdded.get( "First_Name" ), userToBeAdded.get( "Email" ) ) );
-//                } else {
-//                    userList.add( new User() );
-//                }
-//                if (userList.contains( "User_ID" )) {
-//                    Toast.makeText( connContext.getApplicationContext(), "Login Success", Toast.LENGTH_SHORT ).show();
-//                    connContext.startActivity( new Intent( connContext.getApplicationContext(), AppMenu.class ) );
-//                } else {
-//                    Toast.makeText( connContext.getApplicationContext(), "Login Unsuccessful", Toast.LENGTH_SHORT ).show();
-//                }
-//            }
-//
-//
-//        } catch (JsonParseException e) {
-//            e.printStackTrace();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        } catch (JsonMappingException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
     @Override

@@ -8,7 +8,6 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -30,10 +29,11 @@ import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
 
 import project.suzieqcraft.Controller.ImageAdapter;
+import project.suzieqcraft.Interfaces.IGallery;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 
-public class Gallery extends AppCompatActivity {
+public class Gallery extends AppCompatActivity implements IGallery {
 
     RecyclerView recyclerGalleryView;
     ImageAdapter imageAdapter;
@@ -41,44 +41,42 @@ public class Gallery extends AppCompatActivity {
     ImageView galleryImage;
     CardView galleryCardView;
 
-    Button fullscreentest;
-
-    String type = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_gallery );
-        galleryImage = findViewById( R.id.galleryImage );
-        galleryCardView = findViewById( R.id.galleryCardView );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gallery);
+        galleryImage = findViewById(R.id.galleryImage);
+        galleryCardView = findViewById(R.id.galleryCardView);
 
         //Setup Recycler View and get Gallery from database execution
-        recyclerGalleryView = findViewById( R.id.recyclerGalleryView );
+        recyclerGalleryView = findViewById(R.id.recyclerGalleryView);
+        imageAdapter = new ImageAdapter(imageList, this);
+        recyclerGalleryView.setAdapter(imageAdapter);
+        recyclerGalleryView.setLayoutManager(new GridLayoutManager(this, 2));
         new BackgroundImages().execute();
 
         //Layout Manager
-        final GridLayoutManager gridLayoutManager = new GridLayoutManager( this, 2 );
-        recyclerGalleryView.setLayoutManager( gridLayoutManager );
-
-        recyclerGalleryView.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent(Gallery.this, Fullscreen.class ));
-            }
-        } );
-
-
-//       fullscreentest = findViewById( R.id.fullscreentest );
-
-
-
-
-//        fullscreentest.setOnClickListener( new View.OnClickListener() {
+//        recyclerGalleryView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                startActivity( new Intent(Gallery.this, Fullscreen.class ));
+//                startActivity(new Intent(Gallery.this, Fullscreen.class));
 //            }
 //        });
+
+
+// fullscreentest = findViewById( R.id.fullscreentest );
+
+
+// fullscreentest.setOnClickListener( new View.OnClickListener() {
+// @Override
+// public void onClick(View v) {
+// startActivity( new Intent(Gallery.this, Fullscreen.class ));
+// }
+// });
+    }
+    @Override
+    public void onClick(View view, int position) {
+        startActivity(new Intent(Gallery.this, Fullscreen.class));
     }
 
     public class BackgroundImages extends AsyncTask<String, Void, String> {
@@ -91,68 +89,66 @@ public class Gallery extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             String galleryURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
-//            String galleryProductURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php";
-//            if (type.equals( "gallery" )) {
-                URL url;
-                try {
-                    url = new URL( galleryURL );
-                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-                    InputStream inputStream = httpsURLConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
-                    String result = "";
-                    String line;
-                    while ((line = bufferedReader.readLine()) != null) {
-                        result += line;
-                    }
-                    return result;
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+// String galleryProductURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php";
+// if (type.equals( "gallery" )) {
+            URL url;
+            try {
+                url = new URL(galleryURL);
+                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                InputStream inputStream = httpsURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                String result = "";
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
                 }
-//            } else if (type.equals( "product" )) {
-//                URL url;
-//                try {
-//                    url = new URL( galleryProductURL );
-//                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-//                    InputStream inputStream = httpsURLConnection.getInputStream();
-//                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
-//                    String result = "";
-//                    String line;
-//                    while ((line = bufferedReader.readLine()) != null) {
-//                        result += line;
-//                    }
-//                    return result;
-//                } catch (MalformedURLException e) {
-//                    e.printStackTrace();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+// } else if (type.equals( "product" )) {
+// URL url;
+// try {
+// url = new URL( galleryProductURL );
+// HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+// InputStream inputStream = httpsURLConnection.getInputStream();
+// BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+// String result = "";
+// String line;
+// while ((line = bufferedReader.readLine()) != null) {
+// result += line;
+// }
+// return result;
+// } catch (MalformedURLException e) {
+// e.printStackTrace();
+// } catch (IOException e) {
+// e.printStackTrace();
+// }
+// }
             return null;
         }
 
         @Override
         protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate( values );
+            super.onProgressUpdate(values);
         }
 
         @Override
         protected void onPostExecute(String result) {
-            super.onPostExecute( result );
+            super.onPostExecute(result);
 
             try {
-                JSONArray images = new JSONArray( result );
+                JSONArray images = new JSONArray(result);
                 ArrayList<HashMap<String, String>> jsonObjectArrayList;
 
-                jsonObjectArrayList = new ObjectMapper().readValue( images.toString(), ArrayList.class );
-
+                jsonObjectArrayList = new ObjectMapper().readValue(images.toString(), ArrayList.class);
+                imageList.clear();
                 for (HashMap<String, String> imageToBeAdded : jsonObjectArrayList) {
-                    imageList.add( new Image( Integer.parseInt( imageToBeAdded.get( "0" ) ), imageToBeAdded.get( "Gallery_Image" ), imageToBeAdded.get( "Product_Type" ) ) );
+                    imageList.add(new Image(Integer.parseInt(imageToBeAdded.get("0")), imageToBeAdded.get("Gallery_Image"), imageToBeAdded.get("Product_Type")));
                 }
-
-                imageAdapter = new ImageAdapter( imageList );
-                recyclerGalleryView.setAdapter( imageAdapter );
+                imageAdapter.notifyDataSetChanged();
                 String test = "";
 
             } catch (JSONException e) {
@@ -166,4 +162,6 @@ public class Gallery extends AppCompatActivity {
             }
         }
     }
+
+
 }

@@ -18,7 +18,6 @@ public class Login extends AppCompatActivity {
     Button logBtn;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
