@@ -14,6 +14,8 @@ import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 import project.suzieqcraft.View.Fullscreen;
 
+import static com.bumptech.glide.Glide.with;
+
 
 public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.FullscreenHolder> {
 
@@ -33,7 +35,10 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
 
     @Override
     public void onBindViewHolder(@NonNull FullscreenHolder fullscreenHolder, int i) {
-
+        Image image = imageArrayList.get(position);
+        with(holder.itemView.getContext())
+                .load(image.getGalleryImage())
+                .into(holder.imageGalleryView);
     }
 
     @Override
