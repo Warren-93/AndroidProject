@@ -29,7 +29,8 @@ public class Fullscreen extends FragmentActivity {
     fullscreenViewer = findViewById( R.id.fullscreenViewer );
     fullsizeImage = findViewById( R.id.fullsizeImage );
 
-
+    fullscreenAdapter = new FullscreenAdapter( imageArrayList );
+    fullscreenViewer.setAdapter( fullscreenAdapter );
     final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
     fullscreenViewer.setLayoutManager( linearLayoutManager );
 
