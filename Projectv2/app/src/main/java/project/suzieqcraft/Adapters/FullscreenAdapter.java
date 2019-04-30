@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 
 import android.view.ViewGroup;
 
-import project.suzieqcraft.View.Gallery;
+
 
 
 public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.FullScreenViewHolder> {
