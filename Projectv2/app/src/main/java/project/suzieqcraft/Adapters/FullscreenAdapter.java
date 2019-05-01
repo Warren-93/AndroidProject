@@ -21,7 +21,6 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
 
     private ArrayList<Image> fullscreenArrayList;
 
-
     public FullscreenAdapter(ArrayList<Image> fullscreenArrayList) {
         this.fullscreenArrayList = fullscreenArrayList;
     }
@@ -42,8 +41,6 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
                 .into(holder.fullsizeImage);
     }
 
-
-
     @Override
     public int getItemCount() {
         return fullscreenArrayList.size();
@@ -58,6 +55,5 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
             fullsizeImage = itemView.findViewById( R.id.fullsizeImage );
         }
     }
-
 }
 

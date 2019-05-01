@@ -54,7 +54,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
     public ImageView imageView;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
