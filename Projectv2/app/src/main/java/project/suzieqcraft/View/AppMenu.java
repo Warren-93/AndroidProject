@@ -52,7 +52,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
     private ArrayList<Product> productList = new ArrayList();
     public CardView cardView;
     public ImageView imageView;
-    private IProduct listener;
+
 
 
     @Override
