@@ -9,6 +9,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 import project.suzieqcraft.Adapters.ImageAdapter;
 
+import project.suzieqcraft.Fragments.FullScreen_Fragment;
 import project.suzieqcraft.Interfaces.IGallery;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
@@ -48,6 +50,9 @@ public class Gallery extends AppCompatActivity implements IGallery {
     static ArrayList<Image> imageList = new ArrayList();
     ImageView galleryImage;
     CardView galleryCardView;
+    FullScreen_Fragment fullScreen_fragment;
+    private FrameLayout fragment_container;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,13 +77,32 @@ public class Gallery extends AppCompatActivity implements IGallery {
         recyclerGalleryView.setAdapter(imageAdapter);
         recyclerGalleryView.setLayoutManager(new GridLayoutManager(this, 2));
 
-//        BackgroundImages backgroundImages = new BackgroundImages( this );
-//        backgroundImages.execute(type);
+        //FullscreenImage Display
+        fragment_container = findViewById( R.id.fragment_container );
+        fullScreen_fragment = FullScreen_Fragment.createIntent(imageList);
+
+
+
+
+    }
+
+
+    private void showFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, FullScreen_Fragment.createIntent(imageList))
+                .commitAllowingStateLoss();
+
+        fragment_container.setVisibility(View.VISIBLE);
+    }
+
+    private void hideFragment() {
+        fragment_container.setVisibility(View.GONE);
     }
 
     @Override
     public void onClick(View view, int position) {
-        startActivity(new Intent(Gallery.this, Fullscreen.class));
+        showFragment();
     }
 
 

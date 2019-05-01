@@ -207,8 +207,9 @@ public class AppMenu extends AppCompatActivity implements IProduct,
             startActivity( new Intent( this, AppMenu.class ) );
 
         } else if (id == R.id.nav_gallery) {
-            startActivity( new Intent( this, Gallery.class ) );
-
+            Intent intent = new Intent(this, Gallery.class);
+            intent.putExtra(YOUR_KEY, item.getTitle().toString());
+            startActivity(intent);
         } else if (id == R.id.nav_basket) {
 
 //        } else if (id == R.id.nav_send) {

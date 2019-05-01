@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
-import project.suzieqcraft.View.Fullscreen;
 
 import static com.bumptech.glide.Glide.with;
 
