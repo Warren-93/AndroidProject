@@ -37,8 +37,8 @@ import project.suzieqcraft.R;
 public class Gallery extends AppCompatActivity implements IGallery {
 
     RecyclerView recyclerGalleryView;
-    ImageAdapter imageAdapter;
-    ArrayList<Image> imageList = new ArrayList();
+    static ImageAdapter imageAdapter;
+    static ArrayList<Image> imageList = new ArrayList();
     ImageView galleryImage;
     CardView galleryCardView;
 
@@ -61,13 +61,10 @@ public class Gallery extends AppCompatActivity implements IGallery {
     @Override
     public void onClick(View view, int position) {
         startActivity(new Intent(Gallery.this, Fullscreen.class));
-        imageList.get( position );
     }
 
 
-
-
-    public class BackgroundImages extends AsyncTask<String, Void, String> {
+    public static class BackgroundImages extends AsyncTask<String, Void, String> {
 
         @Override
         protected void onPreExecute() {
@@ -139,7 +136,6 @@ public class Gallery extends AppCompatActivity implements IGallery {
                     imageList.add(new Image(Integer.parseInt(imageToBeAdded.get("0")), imageToBeAdded.get("Gallery_Image"), imageToBeAdded.get("Product_Type")));
                 }
                 imageAdapter.notifyDataSetChanged();
-                String test = "";
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -22,7 +22,7 @@
 //import javax.net.ssl.HttpsURLConnection;
 //
 //import project.suzieqcraft.Model.Image;
-
+//
 //public class BackgroundImages extends AsyncTask<String, Void, String> {
 //
 //    private String imagejson_url;
@@ -77,6 +77,8 @@
 //            for (HashMap<String, String> imageToBeAdded : jsonObjectArrayList) {
 //                imageList.add( new Image( Integer.parseInt( imageToBeAdded.get( "0" ) ), imageToBeAdded.get( "Product_Type" ), imageToBeAdded.get( "Product_Image" ) ) );
 //            }
+//
+//
 //            adapter = new ImageAdapter(imageList);
 //            recyclerViewer.setAdapter( adapter );
 //

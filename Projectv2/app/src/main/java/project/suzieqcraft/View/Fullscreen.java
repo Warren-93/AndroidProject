@@ -19,7 +19,7 @@ public class Fullscreen extends FragmentActivity {
     FullscreenAdapter fullscreenAdapter;
     RecyclerView fullscreenViewer;
     ImageView fullsizeImage;
-    private ArrayList<Image> imageArrayList;
+    private ArrayList<Image> imageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +29,11 @@ public class Fullscreen extends FragmentActivity {
     fullscreenViewer = findViewById( R.id.fullscreenViewer );
     fullsizeImage = findViewById( R.id.fullsizeImage );
 
-    fullscreenAdapter = new FullscreenAdapter( imageArrayList );
+    fullscreenAdapter = new FullscreenAdapter( imageList );
     fullscreenViewer.setAdapter( fullscreenAdapter );
-    final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
+
+    final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL, false );
     fullscreenViewer.setLayoutManager( linearLayoutManager );
-    linearLayoutManager.setOrientation( linearLayoutManager.VERTICAL );
-
-
-
+    new Gallery.BackgroundImages().execute();
     }
 }

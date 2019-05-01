@@ -1,4 +1,4 @@
-package project.suzieqcraft.Controller;
+package project.suzieqcraft.Adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+
+import project.suzieqcraft.Interfaces.IProduct;
 import project.suzieqcraft.Model.Product;
 import project.suzieqcraft.R;
 
@@ -18,9 +20,11 @@ import static com.bumptech.glide.Glide.with;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     public ArrayList<Product> productProductArrayList;
+    private IProduct listener;
 
-    public CustomAdapter(ArrayList<Product> productProductArrayList) {
+    public CustomAdapter(ArrayList<Product> productProductArrayList, IProduct listener) {
         this.productProductArrayList = productProductArrayList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,12 +36,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product product = productProductArrayList.get( position );
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        final Product product = productProductArrayList.get( position );
         holder.productName.setText( product.getProductType() );
         with( holder.itemView.getContext() )
                 .load( product.getProductImage() )
                 .into( holder.imageView );
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(v, position);
+            }
+        });
     }
 
     @Override

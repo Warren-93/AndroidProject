@@ -1,13 +1,7 @@
 package project.suzieqcraft.Interfaces;
 
-
 import android.view.View;
 
-public interface IGallery {
+public interface IProduct {
     void onClick(View view, int position);
-
 }
-
-
-
-

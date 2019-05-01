@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,12 +37,13 @@ import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
 
 
-import project.suzieqcraft.Controller.CustomAdapter;
+import project.suzieqcraft.Adapters.CustomAdapter;
+import project.suzieqcraft.Interfaces.IProduct;
 import project.suzieqcraft.Model.Product;
 import project.suzieqcraft.R;
 
-public class AppMenu extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class AppMenu extends AppCompatActivity implements IProduct,
+         NavigationView.OnNavigationItemSelectedListener {
 
     TextView displayUserEmail, displayUsersName;
 
@@ -50,6 +52,7 @@ public class AppMenu extends AppCompatActivity
     private ArrayList<Product> productList = new ArrayList();
     public CardView cardView;
     public ImageView imageView;
+    private IProduct listener;
 
 
     @Override
@@ -64,7 +67,6 @@ public class AppMenu extends AppCompatActivity
         cardView = findViewById( R.id.cardView );
         imageView = findViewById( R.id.imageView );
 
-
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close );
@@ -75,15 +77,19 @@ public class AppMenu extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener( this );
 
         //Setup Recycler View and get Products from database execution
+        adapter = new CustomAdapter(productList, this);
         recyclerViewer = findViewById( R.id.recyclerViewer );
         new BackgroundProducts().execute();
 
         //Layout Manager
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
         recyclerViewer.setLayoutManager( linearLayoutManager );
+    }
 
-
-
+    @Override
+    public void onClick(View view, int position) {
+        startActivity(new Intent(AppMenu.this, Gallery.class));
+        productList.get( position );
 
     }
 
@@ -137,7 +143,9 @@ public class AppMenu extends AppCompatActivity
                 for (HashMap<String, String> productToBeAdded : jsonObjectArrayList) {
                     productList.add( new Product( Integer.parseInt( productToBeAdded.get( "0" ) ), productToBeAdded.get( "Product_Type" ), productToBeAdded.get( "Product_Image" ) ) );
                 }
-                adapter = new CustomAdapter( productList );
+
+//                adapter.notifyDataSetChanged();
+                adapter = new CustomAdapter( productList, listener );
                 recyclerViewer.setAdapter( adapter );
 
             } catch (JSONException e) {
@@ -164,11 +172,11 @@ public class AppMenu extends AppCompatActivity
         }
     }
 
-//    public boolean onCreateOptionsMenu(AppMenu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate( R.menu.menu, (android.view.Menu) menu );
-//        return true;
-//    }
+    public boolean onCreateOptionsMenu(AppMenu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate( R.menu.menu, (android.view.Menu) menu );
+        return true;
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
