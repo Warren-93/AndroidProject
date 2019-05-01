@@ -48,8 +48,6 @@ public class Fullscreen extends FragmentActivity {
     fullscreenViewer = findViewById( R.id.fullscreenViewer );
     fullsizeImage = findViewById( R.id.fullsizeImage );
 
-
-
     fullscreenAdapter = new FullscreenAdapter( fullscreenArrayList );
     fullscreenViewer.setAdapter( fullscreenAdapter );
 
@@ -129,10 +127,10 @@ public class Fullscreen extends FragmentActivity {
                 for (HashMap<String, String> imageToBeAdded : jsonObjectArrayList) {
                     fullscreenArrayList.add(new Image(Integer.parseInt(imageToBeAdded.get("0")), imageToBeAdded.get("Gallery_Image"), imageToBeAdded.get("Product_Type")));
                 }
-                FullscreenAdapter fullscreenAdapter= new FullscreenAdapter( fullscreenArrayList);
-                fullscreenViewer.setAdapter( fullscreenAdapter );
-               fullscreenAdapter.notifyDataSetChanged();
 
+                fullscreenViewer.setAdapter( fullscreenAdapter );
+                fullscreenAdapter.notifyDataSetChanged();
+                
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (JsonParseException e) {

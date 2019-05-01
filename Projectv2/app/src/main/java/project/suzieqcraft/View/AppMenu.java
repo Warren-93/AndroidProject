@@ -98,7 +98,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         Intent intent = new Intent( this, Gallery.class);
         intent.putExtra( YOUR_KEY, productName.toString() );
         startActivity(intent);
-
     }
 
     protected class BackgroundProducts extends AsyncTask<String, Void, String> {

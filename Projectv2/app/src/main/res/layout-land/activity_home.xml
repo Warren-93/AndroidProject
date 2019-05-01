@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_port"
+    android:background="@drawable/background_land"
     tools:context=".View.Home">
 
     <Button
@@ -14,7 +14,7 @@
         android:layout_height="51dp"
         android:layout_marginStart="48dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="68dp"
         android:background="@color/colorPrimary"
         android:fontFamily="cursive"
         android:text="Login"
@@ -22,6 +22,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/registerBtn"
+        app:layout_constraintHorizontal_bias="0.631"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -29,8 +30,8 @@
         style="@android:style/Widget.Button"
         android:layout_width="151dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="68dp"
         android:background="@color/colorPrimary"
         android:fontFamily="cursive"
         android:text="Register"
@@ -44,11 +45,14 @@
         android:id="@+id/menuBtn"
         android:layout_width="237dp"
         android:layout_height="83dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="appMenu"
         android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:onClick="appMenu"/>
+        app:layout_constraintVertical_bias="0.1" />
 
 </android.support.constraint.ConstraintLayout>

@@ -20,11 +20,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -37,8 +41,6 @@ import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 
 public class Gallery extends AppCompatActivity implements IGallery {
-
-
 
     TextView productName;
     RecyclerView recyclerGalleryView;
@@ -58,6 +60,7 @@ public class Gallery extends AppCompatActivity implements IGallery {
         //Setup Recycler View and get Gallery from database execution
         recyclerGalleryView = findViewById(R.id.recyclerGalleryView);
         productName = findViewById( R.id.productName );
+
         Intent startingIntent = getIntent();
         String type;
         if(startingIntent.hasExtra(productName.toString())){
@@ -68,6 +71,9 @@ public class Gallery extends AppCompatActivity implements IGallery {
         imageAdapter = new ImageAdapter(imageList, this);
         recyclerGalleryView.setAdapter(imageAdapter);
         recyclerGalleryView.setLayoutManager(new GridLayoutManager(this, 2));
+
+//        BackgroundImages backgroundImages = new BackgroundImages( this );
+//        backgroundImages.execute(type);
     }
 
     @Override
@@ -93,12 +99,22 @@ public class Gallery extends AppCompatActivity implements IGallery {
         protected String doInBackground(String... params) {
             String type = params[0];
             String galleryURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
-            String productTypeURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php?="+type;
+            String productTypeURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getProductByType.php?="+type;
             if (type.equals( "gallery" )) {
             URL url;
             try {
                 url = new URL(galleryURL);
                 HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                httpsURLConnection.setRequestMethod( "GET" );
+                httpsURLConnection.setDoOutput( true );
+                httpsURLConnection.setDoInput( true );
+                OutputStream outputStream = httpsURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter( outputStream, "UTF-8" ) );
+                String post_data =
+                        URLEncoder.encode( "type", "UTF-8" ) + "=" + URLEncoder.encode( type, "UTF-8" );
+                bufferedWriter.write( post_data );
+                bufferedWriter.flush();
+                bufferedWriter.close();
                 InputStream inputStream = httpsURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String result = "";
@@ -229,6 +245,7 @@ public class Gallery extends AppCompatActivity implements IGallery {
                 for (HashMap<String, String> imageToBeAdded : jsonObjectArrayList) {
                     imageList.add(new Image(Integer.parseInt(imageToBeAdded.get("0")), imageToBeAdded.get("Gallery_Image"), imageToBeAdded.get("Product_Type")));
                 }
+//                recyclerGalleryView.setAdapter( imageAdapter );
                 imageAdapter.notifyDataSetChanged();
 
             } catch (JSONException e) {
