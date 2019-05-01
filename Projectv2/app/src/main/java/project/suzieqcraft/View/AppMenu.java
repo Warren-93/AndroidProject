@@ -96,7 +96,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
     @Override
     public void onClick(View view, int position) {
         Intent intent = new Intent( this, Gallery.class);
-        intent.putExtra( YOUR_KEY, productName.toString() );
+        intent.putExtra( YOUR_KEY, view.toString() );
         startActivity(intent);
     }
 

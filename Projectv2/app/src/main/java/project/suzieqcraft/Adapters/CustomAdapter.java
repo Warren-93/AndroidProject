@@ -36,7 +36,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         final Product product = productProductArrayList.get( position );
         holder.productName.setText( product.getProductType() );
         with( holder.itemView.getContext() )
@@ -45,10 +45,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pListener.onClick(v, position);
+                pListener.onClick(holder.productName, position);
             }
         });
     }
+
 
     @Override
     public int getItemCount() {
