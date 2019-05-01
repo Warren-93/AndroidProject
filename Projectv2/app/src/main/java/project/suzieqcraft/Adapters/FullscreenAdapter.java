@@ -19,11 +19,11 @@ import static com.bumptech.glide.Glide.with;
 
 public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.FullscreenHolder> {
 
-    private ArrayList<Image> imageArrayList;
+    private ArrayList<Image> fullscreenArrayList;
 
 
-    public FullscreenAdapter(ArrayList<Image> imageArrayList) {
-        this.imageArrayList = imageArrayList;
+    public FullscreenAdapter(ArrayList<Image> fullscreenArrayList) {
+        this.fullscreenArrayList = fullscreenArrayList;
     }
 
     @NonNull
@@ -36,15 +36,17 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
 
     @Override
     public void onBindViewHolder(@NonNull FullscreenHolder holder, int position) {
-        Image image = imageArrayList.get(position);
+        Image image = fullscreenArrayList.get(position);
         with(holder.itemView.getContext())
                 .load(image.getGalleryImage())
                 .into(holder.fullsizeImage);
     }
 
+
+
     @Override
     public int getItemCount() {
-        return imageArrayList.size();
+        return fullscreenArrayList.size();
     }
 
     class FullscreenHolder extends RecyclerView.ViewHolder {

@@ -145,7 +145,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
                 }
 
 //                adapter.notifyDataSetChanged();
-                adapter = new CustomAdapter( productList, listener );
+                adapter = new CustomAdapter( productList, pListener );
                 recyclerViewer.setAdapter( adapter );
 
             } catch (JSONException e) {

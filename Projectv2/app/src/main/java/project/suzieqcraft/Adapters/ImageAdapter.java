@@ -18,11 +18,11 @@ import static com.bumptech.glide.Glide.with;
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
 
     private ArrayList<Image> imageArrayList;
-    private IGallery listener;
+    private IGallery gListener;
 
-    public ImageAdapter(ArrayList<Image> imageArrayList, IGallery listener) {
+    public ImageAdapter(ArrayList<Image> imageArrayList, IGallery gListener) {
         this.imageArrayList = imageArrayList;
-        this.listener = listener;
+        this.gListener = gListener;
     }
 
 
@@ -43,7 +43,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHol
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(v, position);
+                gListener.onClick(v, position);
             }
         });
     }

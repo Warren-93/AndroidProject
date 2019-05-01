@@ -20,11 +20,11 @@ import static com.bumptech.glide.Glide.with;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     public ArrayList<Product> productProductArrayList;
-    private IProduct listener;
+    private IProduct pListener;
 
-    public CustomAdapter(ArrayList<Product> productProductArrayList, IProduct listener) {
+    public CustomAdapter(ArrayList<Product> productProductArrayList, IProduct pListener) {
         this.productProductArrayList = productProductArrayList;
-        this.listener = listener;
+        this.pListener = pListener;
     }
 
     @NonNull
@@ -46,7 +46,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(v, position);
+                pListener.onClick(v, position);
             }
         });
     }
