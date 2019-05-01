@@ -14,12 +14,12 @@ import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 
 public class FullScreen_Fragment extends Fragment {
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate( R.layout.fullscreenfrag, container, false);
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        return inflater.inflate( R.layout.fullscreenfrag, container, false);
+//    }
 
     public static FullScreen_Fragment createIntent(ArrayList<Image> productList) {
         FullScreen_Fragment fullScreen_fragment = new FullScreen_Fragment();

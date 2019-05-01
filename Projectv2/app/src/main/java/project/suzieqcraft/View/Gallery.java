@@ -81,8 +81,7 @@ public class Gallery extends AppCompatActivity implements IGallery {
         fragment_container = findViewById( R.id.fragment_container );
         fullScreen_fragment = FullScreen_Fragment.createIntent(imageList);
 
-
-
+        
 
     }
 
