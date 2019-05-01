@@ -47,7 +47,7 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
 
     class FullscreenHolder extends RecyclerView.ViewHolder {
 
-        public ImageView fullsizeImage;
+        private ImageView fullsizeImage;
 
         private FullscreenHolder(View itemView) {
             super( itemView );

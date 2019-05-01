@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -35,6 +36,7 @@ import java.util.HashMap;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import project.suzieqcraft.Adapters.FullscreenAdapter;
 import project.suzieqcraft.Adapters.ImageAdapter;
 
 import project.suzieqcraft.Fragments.FullScreen_Fragment;
@@ -47,11 +49,13 @@ public class Gallery extends AppCompatActivity implements IGallery {
     TextView productName;
     RecyclerView recyclerGalleryView;
     static ImageAdapter imageAdapter;
-    static ArrayList<Image> imageList = new ArrayList();
+    public static ArrayList<Image> imageList = new ArrayList();
     ImageView galleryImage;
     CardView galleryCardView;
     FullScreen_Fragment fullScreen_fragment;
     private FrameLayout fragment_container;
+    static FullscreenAdapter fullscreenAdapter;
+    RecyclerView fullscreenViewer;
 
 
     @Override
@@ -81,10 +85,12 @@ public class Gallery extends AppCompatActivity implements IGallery {
         fragment_container = findViewById( R.id.fragment_container );
         fullScreen_fragment = FullScreen_Fragment.createIntent(imageList);
 
-        
+        fullscreenAdapter = new FullscreenAdapter( imageList );
+        fullscreenViewer.setAdapter( fullscreenAdapter );
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL, false );
+        fullscreenViewer.setLayoutManager( linearLayoutManager );
 
     }
-
 
     private void showFragment() {
         getSupportFragmentManager()
@@ -101,7 +107,11 @@ public class Gallery extends AppCompatActivity implements IGallery {
 
     @Override
     public void onClick(View view, int position) {
-        showFragment();
+        if(!fragment_container.isShown()){
+            showFragment();
+        }else{
+            hideFragment();
+        }
     }
 
 
