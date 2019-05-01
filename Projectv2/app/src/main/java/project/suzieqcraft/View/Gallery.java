@@ -63,8 +63,8 @@ public class Gallery extends AppCompatActivity implements IGallery {
 
         Intent startingIntent = getIntent();
         String type;
-        if(startingIntent.hasExtra(productName.toString())){
-            type = startingIntent.getStringExtra(  productName.toString());
+        if(startingIntent.hasExtra("product_key")){
+            type = startingIntent.getStringExtra("product_key");
             BackgroundImages backgroundImages = new BackgroundImages( Gallery.this );
             backgroundImages.execute(type);
         }

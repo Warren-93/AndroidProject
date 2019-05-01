@@ -90,7 +90,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
         recyclerViewer.setLayoutManager( linearLayoutManager );
 
-        YOUR_KEY = productName.toString();
+        YOUR_KEY = "product_key";
     }
 
     @Override
