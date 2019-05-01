@@ -52,6 +52,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
     private ArrayList<Product> productList = new ArrayList();
     public CardView cardView;
     public ImageView imageView;
+    private IProduct pListener;
 
 
     @Override
@@ -76,7 +77,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         navigationView.setNavigationItemSelectedListener( this );
 
         //Setup Recycler View and get Products from database execution
-        adapter = new CustomAdapter(productList, this);
         recyclerViewer = findViewById( R.id.recyclerViewer );
         new BackgroundProducts().execute();
 
@@ -143,9 +143,9 @@ public class AppMenu extends AppCompatActivity implements IProduct,
                     productList.add( new Product( Integer.parseInt( productToBeAdded.get( "0" ) ), productToBeAdded.get( "Product_Type" ), productToBeAdded.get( "Product_Image" ) ) );
                 }
 
-//                adapter.notifyDataSetChanged();
                 adapter = new CustomAdapter( productList, pListener );
                 recyclerViewer.setAdapter( adapter );
+                adapter.notifyDataSetChanged();
 
             } catch (JSONException e) {
                 e.printStackTrace();
