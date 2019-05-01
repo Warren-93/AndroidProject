@@ -52,7 +52,9 @@ public class AppMenu extends AppCompatActivity implements IProduct,
     private ArrayList<Product> productList = new ArrayList();
     public CardView cardView;
     public ImageView imageView;
+    public TextView productName;
     private IProduct pListener;
+    String YOUR_KEY;
 
 
     @Override
@@ -66,6 +68,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         displayUsersName = findViewById( R.id.displayUsersName );
         cardView = findViewById( R.id.cardView );
         imageView = findViewById( R.id.imageView );
+        productName = findViewById( R.id.productName );
 
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -78,19 +81,24 @@ public class AppMenu extends AppCompatActivity implements IProduct,
 
         //Setup Recycler View and get Products from database execution
         adapter = new CustomAdapter(productList, this);
-
         recyclerViewer = findViewById( R.id.recyclerViewer );
+
+
         new BackgroundProducts().execute();
 
         //Layout Manager
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this );
         recyclerViewer.setLayoutManager( linearLayoutManager );
+
+        YOUR_KEY = productName.toString();
     }
 
     @Override
     public void onClick(View view, int position) {
-        startActivity(new Intent(AppMenu.this, Gallery.class));
-        productList.get( position );
+        Intent intent = new Intent( this, Gallery.class);
+        intent.putExtra( YOUR_KEY, productName.toString() );
+        startActivity(intent);
+
     }
 
     protected class BackgroundProducts extends AsyncTask<String, Void, String> {

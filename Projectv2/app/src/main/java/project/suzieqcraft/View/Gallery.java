@@ -1,5 +1,6 @@
 package project.suzieqcraft.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -36,6 +38,9 @@ import project.suzieqcraft.R;
 
 public class Gallery extends AppCompatActivity implements IGallery {
 
+
+
+    TextView productName;
     RecyclerView recyclerGalleryView;
     static ImageAdapter imageAdapter;
     static ArrayList<Image> imageList = new ArrayList();
@@ -46,16 +51,23 @@ public class Gallery extends AppCompatActivity implements IGallery {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery);
+
         galleryImage = findViewById(R.id.galleryImage);
         galleryCardView = findViewById(R.id.galleryCardView);
 
         //Setup Recycler View and get Gallery from database execution
         recyclerGalleryView = findViewById(R.id.recyclerGalleryView);
+        productName = findViewById( R.id.productName );
+        Intent startingIntent = getIntent();
+        String type;
+        if(startingIntent.hasExtra(productName.toString())){
+            type = startingIntent.getStringExtra(  productName.toString());
+            BackgroundImages backgroundImages = new BackgroundImages( Gallery.this );
+            backgroundImages.execute(type);
+        }
         imageAdapter = new ImageAdapter(imageList, this);
         recyclerGalleryView.setAdapter(imageAdapter);
         recyclerGalleryView.setLayoutManager(new GridLayoutManager(this, 2));
-        new BackgroundImages().execute();
-
     }
 
     @Override
@@ -66,6 +78,12 @@ public class Gallery extends AppCompatActivity implements IGallery {
 
     public static class BackgroundImages extends AsyncTask<String, Void, String> {
 
+        private Context imageContext;
+
+        public BackgroundImages(Context ctx) {
+            imageContext = ctx;
+        }
+
         @Override
         protected void onPreExecute() {
 
@@ -73,9 +91,10 @@ public class Gallery extends AppCompatActivity implements IGallery {
 
         @Override
         protected String doInBackground(String... params) {
+            String type = params[0];
             String galleryURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
-            // String galleryProductURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php";
-            // if (type.equals( "gallery" )) {
+            String productTypeURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGalleryByType.php?="+type;
+            if (type.equals( "gallery" )) {
             URL url;
             try {
                 url = new URL(galleryURL);
@@ -93,27 +112,102 @@ public class Gallery extends AppCompatActivity implements IGallery {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//        } else if(type.equals("product"))
-//
-//        {
-//            URL url;
-//            try {
-//                url = new URL( galleryProductURL );
-//                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-//                InputStream inputStream = httpsURLConnection.getInputStream();
-//                BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
-//                String result = "";
-//                String line;
-//                while ((line = bufferedReader.readLine()) != null) {
-//                    result += line;
-//                }
-//                return result;
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        } else if(type.equals("Canvas"))
+        {
+            URL url;
+            try {
+                url = new URL( productTypeURL );
+                HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                InputStream inputStream = httpsURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                String result = "";
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    result += line;
+                }
+                return result;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(type.equals("Shadow Box"))
+            {
+                URL url;
+                try {
+                    url = new URL( productTypeURL );
+                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    InputStream inputStream = httpsURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    String result = "";
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        result += line;
+                    }
+                    return result;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if(type.equals("Keyring"))
+            {
+                URL url;
+                try {
+                    url = new URL( productTypeURL );
+                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    InputStream inputStream = httpsURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    String result = "";
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        result += line;
+                    }
+                    return result;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if(type.equals("Cards"))
+            {
+                URL url;
+                try {
+                    url = new URL( productTypeURL );
+                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    InputStream inputStream = httpsURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    String result = "";
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        result += line;
+                    }
+                    return result;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if(type.equals("Jewellery"))
+            {
+                URL url;
+                try {
+                    url = new URL( productTypeURL );
+                    HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    InputStream inputStream = httpsURLConnection.getInputStream();
+                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    String result = "";
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        result += line;
+                    }
+                    return result;
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             return null;
         }
 

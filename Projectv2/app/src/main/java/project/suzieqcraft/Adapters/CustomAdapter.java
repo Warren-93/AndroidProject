@@ -42,7 +42,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         with( holder.itemView.getContext() )
                 .load( product.getProductImage() )
                 .into( holder.imageView );
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
