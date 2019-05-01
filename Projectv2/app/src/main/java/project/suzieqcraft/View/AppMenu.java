@@ -78,6 +78,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
 
         //Setup Recycler View and get Products from database execution
         adapter = new CustomAdapter(productList, this);
+
         recyclerViewer = findViewById( R.id.recyclerViewer );
         new BackgroundProducts().execute();
 
@@ -142,7 +143,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
                 for (HashMap<String, String> productToBeAdded : jsonObjectArrayList) {
                     productList.add( new Product( Integer.parseInt( productToBeAdded.get( "0" ) ), productToBeAdded.get( "Product_Type" ), productToBeAdded.get( "Product_Image" ) ) );
                 }
-                adapter = new CustomAdapter( productList, pListener );
                 recyclerViewer.setAdapter( adapter );
                 adapter.notifyDataSetChanged();
 
