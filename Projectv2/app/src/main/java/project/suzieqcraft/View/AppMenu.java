@@ -77,6 +77,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         navigationView.setNavigationItemSelectedListener( this );
 
         //Setup Recycler View and get Products from database execution
+        adapter = new CustomAdapter(productList, this);
         recyclerViewer = findViewById( R.id.recyclerViewer );
         new BackgroundProducts().execute();
 
@@ -89,7 +90,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
     public void onClick(View view, int position) {
         startActivity(new Intent(AppMenu.this, Gallery.class));
         productList.get( position );
-
     }
 
     protected class BackgroundProducts extends AsyncTask<String, Void, String> {
@@ -142,7 +142,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
                 for (HashMap<String, String> productToBeAdded : jsonObjectArrayList) {
                     productList.add( new Product( Integer.parseInt( productToBeAdded.get( "0" ) ), productToBeAdded.get( "Product_Type" ), productToBeAdded.get( "Product_Image" ) ) );
                 }
-
                 adapter = new CustomAdapter( productList, pListener );
                 recyclerViewer.setAdapter( adapter );
                 adapter.notifyDataSetChanged();
@@ -158,6 +157,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
             }
         }
     }
+
 
     @Override
     public void onBackPressed() {
@@ -186,6 +186,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         if (id == R.id.action_settings) {
             return true;
         }
+
         return super.onOptionsItemSelected( item );
     }
 
@@ -203,11 +204,14 @@ public class AppMenu extends AppCompatActivity implements IProduct,
 
         } else if (id == R.id.nav_basket) {
 
+//        } else if (id == R.id.nav_send) {
+
         } else if (id == R.id.nav_contactUs) {
             startActivity( new Intent( this, Location.class ) );
 
         } else if (id == R.id.nav_exit) {
             startActivity( new Intent( this, Home.class ) );
+
         }
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );

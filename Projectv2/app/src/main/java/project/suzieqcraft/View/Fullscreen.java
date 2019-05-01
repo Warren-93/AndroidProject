@@ -28,6 +28,7 @@ import java.util.HashMap;
 import javax.net.ssl.HttpsURLConnection;
 
 import project.suzieqcraft.Adapters.FullscreenAdapter;
+import project.suzieqcraft.Fragments.FullScreen_Fragment;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 
@@ -36,7 +37,8 @@ public class Fullscreen extends FragmentActivity {
     FullscreenAdapter fullscreenAdapter;
     RecyclerView fullscreenViewer;
     ImageView fullsizeImage;
-    private ArrayList<Image> fullscreenArrayList;
+    FullScreen_Fragment fullScreen_fragment;
+    ArrayList<Image> fullscreenArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,15 +48,17 @@ public class Fullscreen extends FragmentActivity {
     fullscreenViewer = findViewById( R.id.fullscreenViewer );
     fullsizeImage = findViewById( R.id.fullsizeImage );
 
+
+
     fullscreenAdapter = new FullscreenAdapter( fullscreenArrayList );
     fullscreenViewer.setAdapter( fullscreenAdapter );
 
     final LinearLayoutManager linearLayoutManager = new LinearLayoutManager( this, LinearLayoutManager.HORIZONTAL, false );
     fullscreenViewer.setLayoutManager( linearLayoutManager );
-    new BackgroundImages().execute();
+    new BackgroundFullscreen().execute();
     }
 
-    class BackgroundImages extends AsyncTask<String, Void, String> {
+    class BackgroundFullscreen extends AsyncTask<String, Void, String> {
 
         @Override
         protected void onPreExecute() {

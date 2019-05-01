@@ -4,12 +4,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Fullscreen">
-
-    <ImageView
-        android:id="@+id/fullsizeImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        android:background="@color/common_google_signin_btn_text_dark_focused" />
-</LinearLayout>
+    tools:context=".View.Fullscreen"/>

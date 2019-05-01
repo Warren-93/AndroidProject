@@ -18,4 +18,6 @@ public class FullScreen_Fragment extends Fragment {
         return inflater.inflate( R.layout.fullscreenfrag, container, false);
     }
 
+
+
 }
