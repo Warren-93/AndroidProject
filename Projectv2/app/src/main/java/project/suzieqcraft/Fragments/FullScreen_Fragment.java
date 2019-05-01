@@ -26,15 +26,12 @@ public class FullScreen_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate( R.layout.fullscreenfrag, container, false);
-
 
         fullscreenAdapter = new FullscreenAdapter( imageList );
         fullscreenViewer.setAdapter( fullscreenAdapter );
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager( FullScreen_Fragment.this, LinearLayoutManager.HORIZONTAL, false );
-        fullscreenViewer.setLayoutManager( linearLayoutManager );
 
+        // Inflate the layout for this fragment
+        return inflater.inflate( R.layout.fullscreenfrag, container, false);
 
     }
 
