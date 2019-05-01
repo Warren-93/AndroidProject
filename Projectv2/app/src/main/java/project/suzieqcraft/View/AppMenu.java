@@ -156,10 +156,8 @@ public class AppMenu extends AppCompatActivity implements IProduct,
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
-
 
     @Override
     public void onBackPressed() {
@@ -188,7 +186,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected( item );
     }
 
@@ -206,14 +203,11 @@ public class AppMenu extends AppCompatActivity implements IProduct,
 
         } else if (id == R.id.nav_basket) {
 
-//        } else if (id == R.id.nav_send) {
-
         } else if (id == R.id.nav_contactUs) {
             startActivity( new Intent( this, Location.class ) );
 
         } else if (id == R.id.nav_exit) {
             startActivity( new Intent( this, Home.class ) );
-
         }
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );

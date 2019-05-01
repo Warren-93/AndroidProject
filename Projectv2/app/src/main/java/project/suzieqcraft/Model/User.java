@@ -2,8 +2,6 @@ package project.suzieqcraft.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
-
 public class User {
 
     protected int userID;
@@ -56,7 +54,6 @@ public class User {
     public String getEmail() {
         return this.userEmail;
     }
-
 
     @JsonProperty("Product_ID")
     public String setName(String name) {
