@@ -100,12 +100,12 @@ public class Gallery extends AppCompatActivity implements IGallery {
             String type = params[0];
             String galleryURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getGallery.php";
             String productTypeURL = "https://mayar.abertay.ac.uk/~1605460/Android/Model/getProductByType.php?="+type;
-            if (type.equals( "gallery" )) {
+            if (type.equals( "Gallery" )) {
             URL url;
             try {
                 url = new URL(galleryURL);
                 HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
-                httpsURLConnection.setRequestMethod( "GET" );
+                httpsURLConnection.setRequestMethod( "POST" );
                 httpsURLConnection.setDoOutput( true );
                 httpsURLConnection.setDoInput( true );
                 OutputStream outputStream = httpsURLConnection.getOutputStream();
@@ -132,10 +132,20 @@ public class Gallery extends AppCompatActivity implements IGallery {
         {
             URL url;
             try {
-                url = new URL( productTypeURL );
+                url = new URL(productTypeURL);
                 HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                httpsURLConnection.setRequestMethod( "POST" );
+                httpsURLConnection.setDoOutput( true );
+                httpsURLConnection.setDoInput( true );
+                OutputStream outputStream = httpsURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter( outputStream, "UTF-8" ) );
+                String post_data =
+                        URLEncoder.encode( "type", "UTF-8" ) + "=" + URLEncoder.encode( type, "UTF-8" );
+                bufferedWriter.write( post_data );
+                bufferedWriter.flush();
+                bufferedWriter.close();
                 InputStream inputStream = httpsURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                 String result = "";
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
@@ -151,10 +161,20 @@ public class Gallery extends AppCompatActivity implements IGallery {
             {
                 URL url;
                 try {
-                    url = new URL( productTypeURL );
+                    url = new URL(productTypeURL);
                     HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    httpsURLConnection.setRequestMethod( "POST" );
+                    httpsURLConnection.setDoOutput( true );
+                    httpsURLConnection.setDoInput( true );
+                    OutputStream outputStream = httpsURLConnection.getOutputStream();
+                    BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter( outputStream, "UTF-8" ) );
+                    String post_data =
+                            URLEncoder.encode( "type", "UTF-8" ) + "=" + URLEncoder.encode( type, "UTF-8" );
+                    bufferedWriter.write( post_data );
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
                     InputStream inputStream = httpsURLConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     String result = "";
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
@@ -170,10 +190,20 @@ public class Gallery extends AppCompatActivity implements IGallery {
             {
                 URL url;
                 try {
-                    url = new URL( productTypeURL );
+                    url = new URL(productTypeURL);
                     HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    httpsURLConnection.setRequestMethod( "POST" );
+                    httpsURLConnection.setDoOutput( true );
+                    httpsURLConnection.setDoInput( true );
+                    OutputStream outputStream = httpsURLConnection.getOutputStream();
+                    BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter( outputStream, "UTF-8" ) );
+                    String post_data =
+                            URLEncoder.encode( "type", "UTF-8" ) + "=" + URLEncoder.encode( type, "UTF-8" );
+                    bufferedWriter.write( post_data );
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
                     InputStream inputStream = httpsURLConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     String result = "";
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
@@ -189,10 +219,20 @@ public class Gallery extends AppCompatActivity implements IGallery {
             {
                 URL url;
                 try {
-                    url = new URL( productTypeURL );
+                    url = new URL(productTypeURL);
                     HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    httpsURLConnection.setRequestMethod( "POST" );
+                    httpsURLConnection.setDoOutput( true );
+                    httpsURLConnection.setDoInput( true );
+                    OutputStream outputStream = httpsURLConnection.getOutputStream();
+                    BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter( outputStream, "UTF-8" ) );
+                    String post_data =
+                            URLEncoder.encode( "type", "UTF-8" ) + "=" + URLEncoder.encode( type, "UTF-8" );
+                    bufferedWriter.write( post_data );
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
                     InputStream inputStream = httpsURLConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     String result = "";
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
@@ -208,10 +248,20 @@ public class Gallery extends AppCompatActivity implements IGallery {
             {
                 URL url;
                 try {
-                    url = new URL( productTypeURL );
+                    url = new URL(productTypeURL);
                     HttpsURLConnection httpsURLConnection = (HttpsURLConnection) url.openConnection();
+                    httpsURLConnection.setRequestMethod( "POST" );
+                    httpsURLConnection.setDoOutput( true );
+                    httpsURLConnection.setDoInput( true );
+                    OutputStream outputStream = httpsURLConnection.getOutputStream();
+                    BufferedWriter bufferedWriter = new BufferedWriter( new OutputStreamWriter( outputStream, "UTF-8" ) );
+                    String post_data =
+                            URLEncoder.encode( "type", "UTF-8" ) + "=" + URLEncoder.encode( type, "UTF-8" );
+                    bufferedWriter.write( post_data );
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
                     InputStream inputStream = httpsURLConnection.getInputStream();
-                    BufferedReader bufferedReader = new BufferedReader( new InputStreamReader( inputStream ) );
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
                     String result = "";
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
