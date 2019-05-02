@@ -8,14 +8,10 @@
 
     <FrameLayout
         android:id="@+id/FrameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -26,6 +22,9 @@
             android:orientation="horizontal"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             tools:itemCount="1"
-            tools:spanCount="5" />
+            tools:spanCount="5">
+
+        </android.support.v7.widget.RecyclerView>
+
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

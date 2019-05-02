@@ -34,10 +34,10 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
 
     @Override
     public void onBindViewHolder(@NonNull FullscreenHolder holder, int position) {
-        Image image = fullscreenArrayList.get(position);
-        with(holder.itemView.getContext())
-                .load(image.getGalleryImage())
-                .into(holder.fullsizeImage);
+        Image image = fullscreenArrayList.get( position );
+        with( holder.itemView.getContext() )
+                .load( image.getGalleryImage() )
+                .into( holder.fullsizeImage );
     }
 
     @Override

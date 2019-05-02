@@ -19,15 +19,12 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 //import project.suzieqcraft.View.AppMenu;
-import project.suzieqcraft.Model.User;
 import project.suzieqcraft.View.AppMenu;
 
 
 public class Connection extends AsyncTask<String, Void, String> {
 
     private Context connContext;
-    public ArrayList<User> userList = new ArrayList();
-
 
     public Connection(Context ctx) {
         connContext = ctx;
