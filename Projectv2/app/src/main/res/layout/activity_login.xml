@@ -9,21 +9,21 @@
 
     <Button
         android:id="@+id/logBtn"
-        android:layout_width="220dp"
-        android:layout_height="35dp"
+        android:layout_width="203dp"
+        android:layout_height="36dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="232dp"
         android:background="@color/colorAccent"
         android:fontFamily="cursive"
         android:text="Login"
-        android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintHorizontal_bias="0.865"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logPassword"
-        app:layout_constraintVertical_bias="0.129" />
+        app:layout_constraintVertical_bias="0.147" />
 
     <EditText
         android:id="@+id/edtLogEmail"
@@ -34,7 +34,7 @@
         android:fontFamily="sans-serif-condensed"
         android:inputType="textEmailAddress"
         android:text="Email"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.789"
@@ -49,7 +49,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:text="Password"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.789"
