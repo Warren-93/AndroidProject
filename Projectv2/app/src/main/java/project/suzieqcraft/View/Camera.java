@@ -137,8 +137,8 @@ public class Camera extends AppCompatActivity {
                         .getOutputSizes(ImageFormat.JPEG);
 
             //Capture image with custom size
-            int width = 1080;
-            int height = 1080;
+            int width = 400;
+            int height = 600;
             if(jpgSizes != null && jpgSizes.length > 0)
             {
                 width = jpgSizes[0].getWidth();
