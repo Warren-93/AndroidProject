@@ -9,13 +9,12 @@
 
     <TextureView
         android:id="@+id/textureView"
-        android:layout_width="723dp"
-        android:layout_height="407dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="733dp"
+        android:layout_height="417dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnGallery"

@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/galleryImage"
-            android:layout_width="309dp"
-            android:layout_height="201dp"
+            android:layout_width="357dp"
+            android:layout_height="161dp"
             tools:layout_conversion_wrapHeight="593"
             tools:layout_conversion_wrapWidth="480" />
     </android.support.v7.widget.CardView>
