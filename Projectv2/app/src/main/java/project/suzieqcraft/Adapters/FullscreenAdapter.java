@@ -52,6 +52,13 @@ public class FullscreenAdapter extends RecyclerView.Adapter<FullscreenAdapter.Fu
         private FullscreenHolder(View itemView) {
             super( itemView );
             fullsizeImage = itemView.findViewById( R.id.fullsizeImage );
+
+            fullsizeImage.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            } );
         }
     }
 }

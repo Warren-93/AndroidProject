@@ -2,6 +2,7 @@ package project.suzieqcraft.View;
 
 import android.content.Context;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ import project.suzieqcraft.Interfaces.IGallery;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
 
+import static android.view.View.GONE;
+
 public class Gallery extends AppCompatActivity implements IGallery {
 
     TextView productName;
@@ -55,8 +58,6 @@ public class Gallery extends AppCompatActivity implements IGallery {
     FullScreen_Fragment fullScreen_fragment;
     private FrameLayout fragment_container;
     ImageView fullscreenImage;
-
-
 
 
     @Override
@@ -100,16 +101,12 @@ public class Gallery extends AppCompatActivity implements IGallery {
     }
 
     private void hideFragment() {
-        fragment_container.setVisibility(View.GONE);
+        fragment_container.setVisibility( View.GONE);
     }
 
     @Override
     public void onClick(View view, int position) {
-        if(fragment_container.isShown()){
-            hideFragment();
-        }else{
             showFragment();
-        }
     }
 
     public static class BackgroundImages extends AsyncTask<String, Void, String> {
@@ -122,7 +119,6 @@ public class Gallery extends AppCompatActivity implements IGallery {
 
         @Override
         protected void onPreExecute() {
-
         }
 
         @Override
