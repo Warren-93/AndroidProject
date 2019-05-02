@@ -119,7 +119,7 @@ public class Camera extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Camera.this, Gallery.class);
-                intent.putExtra(YOUR_KEY, "");
+                intent.putExtra(YOUR_KEY, btnGallery.getText().toString());
                 startActivity(intent);
             }
         });
