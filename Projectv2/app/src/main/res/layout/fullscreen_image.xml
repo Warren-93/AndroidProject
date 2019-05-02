@@ -9,8 +9,9 @@
     <ImageView
         android:id="@+id/fullsizeImage"
         android:layout_width="411dp"
-        android:layout_height="731dp"
+        android:layout_height="733dp"
         android:background="@color/common_google_signin_btn_text_dark_focused"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
