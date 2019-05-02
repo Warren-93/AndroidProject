@@ -93,6 +93,7 @@ public class Camera extends AppCompatActivity {
             cameraDevice=null;
         }
     };
+    String albumName = "SuzieQCraft";
 
 
     @Override
@@ -100,7 +101,7 @@ public class Camera extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView( R.layout.activity_camera);
 
-        textureView = (TextureView)findViewById(R.id.textureView);
+        textureView = findViewById(R.id.textureView);
         textureView.setSurfaceTextureListener(textureListener);
         btnCapture = findViewById(R.id.btnCapture);
         btnCapture.setOnClickListener(new View.OnClickListener() {
@@ -156,7 +157,7 @@ public class Camera extends AppCompatActivity {
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             captureBuilder.set(CaptureRequest.JPEG_ORIENTATION,ORIENTATIONS.get(rotation));
 
-            file = new File(Environment.getExternalStorageDirectory()+"/"+UUID.randomUUID().toString()+".jpg");
+            file = new File( new File( Environment.getExternalStoragePublicDirectory( Environment.DIRECTORY_PICTURES ), albumName ) + "/" + UUID.randomUUID().toString() + ".jpg" );
             ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener() {
                 @Override
                 public void onImageAvailable(ImageReader imageReader) {
@@ -275,7 +276,7 @@ public class Camera extends AppCompatActivity {
             StreamConfigurationMap map = characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             assert map != null;
             imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
-            //Check realtime permission if run higher API 23
+            //Check realtime permission
             if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
             {
                 ActivityCompat.requestPermissions(this,new String[]{
