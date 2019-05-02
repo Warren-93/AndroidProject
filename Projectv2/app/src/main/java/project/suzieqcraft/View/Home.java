@@ -11,7 +11,7 @@ import project.suzieqcraft.R;
 
 public class Home extends AppCompatActivity {
 
-    Button  regBtn, loginBtn, cameraBtn;
+    Button  regBtn, loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +20,6 @@ public class Home extends AppCompatActivity {
 
         regBtn = findViewById( R.id.registerBtn );
         loginBtn = findViewById( R.id.loginBtn );
-
-        cameraBtn = findViewById( R.id.cameraBtn );
-
 
         loginBtn.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -38,11 +35,6 @@ public class Home extends AppCompatActivity {
             }
         } );
 
-        cameraBtn.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity( new Intent(Home.this, Camera.class) );
-            }
-        } );
+
     }
 }

@@ -2,6 +2,7 @@ package project.suzieqcraft.View;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
@@ -48,6 +49,7 @@ public class Camera extends AppCompatActivity {
 
     private Button btnCapture, btnGallery;
     private TextureView textureView;
+    String YOUR_KEY;
 
 
     //Check state orientation of output image
@@ -110,11 +112,15 @@ public class Camera extends AppCompatActivity {
             }
         });
 
+        YOUR_KEY = "product_key";
+
         btnGallery = findViewById( R.id.btnGallery );
         btnGallery.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Camera.this, Gallery.class);
+                intent.putExtra(YOUR_KEY, "");
+                startActivity(intent);
             }
         });
 

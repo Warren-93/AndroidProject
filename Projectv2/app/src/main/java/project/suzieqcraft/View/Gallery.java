@@ -54,9 +54,6 @@ public class Gallery extends AppCompatActivity implements IGallery {
     CardView galleryCardView;
     FullScreen_Fragment fullScreen_fragment;
     private FrameLayout fragment_container;
-    static FullscreenAdapter fullscreenAdapter;
-    RecyclerView fullscreenViewer;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
