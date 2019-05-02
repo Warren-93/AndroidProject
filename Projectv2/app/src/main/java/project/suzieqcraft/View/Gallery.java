@@ -55,7 +55,7 @@ public class Gallery extends AppCompatActivity implements IGallery {
     FullScreen_Fragment fullScreen_fragment;
     private FrameLayout fragment_container;
     ImageView fullscreenImage;
-    Button btnClose;
+
 
 
 
@@ -71,7 +71,6 @@ public class Gallery extends AppCompatActivity implements IGallery {
         recyclerGalleryView = findViewById(R.id.recyclerGalleryView);
         productName = findViewById( R.id.productName );
         fullscreenImage = findViewById( R.id.fullsizeImage );
-        btnClose = findViewById( R.id.btnClose );
 
 
         Intent startingIntent = getIntent();
@@ -88,15 +87,6 @@ public class Gallery extends AppCompatActivity implements IGallery {
         //FullscreenImage Display
         fragment_container = findViewById( R.id.fragment_container );
         fullScreen_fragment = FullScreen_Fragment.createIntent(imageList);
-
-
-        btnClose.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideFragment();
-            }
-        } );
-
 
     }
 
@@ -115,12 +105,12 @@ public class Gallery extends AppCompatActivity implements IGallery {
 
     @Override
     public void onClick(View view, int position) {
-        if(!fragment_container.isShown()) {
+        if(fragment_container.isShown()){
+            hideFragment();
+        }else{
             showFragment();
         }
     }
-
-
 
     public static class BackgroundImages extends AsyncTask<String, Void, String> {
 
