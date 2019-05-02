@@ -101,8 +101,6 @@ public class Camera extends AppCompatActivity {
         setContentView( R.layout.activity_camera);
 
         textureView = (TextureView)findViewById(R.id.textureView);
-        //From Java 1.4 , you can use keyword 'assert' to check expression true or false
-        assert textureView != null;
         textureView.setSurfaceTextureListener(textureListener);
         btnCapture = findViewById(R.id.btnCapture);
         btnCapture.setOnClickListener(new View.OnClickListener() {
