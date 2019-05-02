@@ -56,7 +56,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
     private IProduct pListener;
     String YOUR_KEY;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -82,8 +81,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         //Setup Recycler View and get Products from database execution
         adapter = new CustomAdapter(productList, this);
         recyclerViewer = findViewById( R.id.recyclerViewer );
-
-
         new BackgroundProducts().execute();
 
         //Layout Manager
@@ -165,7 +162,6 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         }
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
@@ -176,15 +172,7 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         }
     }
 
-    public boolean onCreateOptionsMenu(AppMenu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate( R.menu.menu, (android.view.Menu) menu );
-        return true;
-    }
 
-
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.

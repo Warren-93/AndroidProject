@@ -29,30 +29,24 @@
         <activity
             android:name=".View.Location"
             android:label="@string/title_activity_contact_us"
-            android:noHistory="true"
             android:screenOrientation="sensorPortrait"
             />
         <activity android:name=".View.Gallery"
-            android:noHistory="true"
             android:screenOrientation="sensorPortrait"
             />
         <activity
             android:name=".View.AppMenu"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar"
-            android:noHistory="true"
             android:screenOrientation="sensorPortrait"
             />
         <activity android:name=".View.Register"
-            android:noHistory="true"
             android:screenOrientation="sensorPortrait"
             />
         <activity android:name=".View.Login"
-            android:noHistory="true"
             android:screenOrientation="sensorPortrait"
             />
         <activity android:name=".View.Home"
-            android:noHistory="true"
             android:screenOrientation="sensorPortrait"
             >
             <intent-filter>
