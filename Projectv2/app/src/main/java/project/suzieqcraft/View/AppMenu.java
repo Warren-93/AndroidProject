@@ -204,23 +204,29 @@ public class AppMenu extends AppCompatActivity implements IProduct,
         int id = item.getItemId();
 
         if (id == R.id.nav_productlist) {
+
             startActivity( new Intent( this, AppMenu.class ) );
 
         } else if (id == R.id.nav_gallery) {
+
             Intent intent = new Intent(this, Gallery.class);
             intent.putExtra(YOUR_KEY, item.getTitle().toString());
             startActivity(intent);
-        } else if (id == R.id.nav_basket) {
 
-//        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_camera) {
 
-        } else if (id == R.id.nav_contactUs) {
+            startActivity( new Intent( this, Camera.class ) );
+
+        } else if (id == R.id.nav_location) {
+
             startActivity( new Intent( this, Location.class ) );
 
         } else if (id == R.id.nav_exit) {
+
             startActivity( new Intent( this, Home.class ) );
 
         }
+
         DrawerLayout drawer = findViewById( R.id.drawer_layout );
         drawer.closeDrawer( GravityCompat.START );
         return true;
