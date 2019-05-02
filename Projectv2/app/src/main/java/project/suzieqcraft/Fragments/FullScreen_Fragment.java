@@ -28,6 +28,8 @@ public class FullScreen_Fragment extends Fragment {
     FullscreenAdapter fullscreenAdapter;
     RecyclerView fullscreenViewer;
 
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated( view, savedInstanceState );
@@ -37,7 +39,6 @@ public class FullScreen_Fragment extends Fragment {
 
         SnapHelper snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView( fullscreenViewer );
-
 
     }
 

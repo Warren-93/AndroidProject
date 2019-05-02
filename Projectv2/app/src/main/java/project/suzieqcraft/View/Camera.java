@@ -90,11 +90,10 @@ public class Camera extends AppCompatActivity {
         @Override
         public void onError(@NonNull CameraDevice cameraDevice, int i) {
             cameraDevice.close();
-            cameraDevice=null;
         }
     };
-    String albumName = "SuzieQCraft";
 
+    String albumName = "SuzieQCraft";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

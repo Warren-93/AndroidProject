@@ -8,8 +8,8 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerGalleryView"
-        android:layout_width="391dp"
-        android:layout_height="679dp"
+        android:layout_width="399dp"
+        android:layout_height="654dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.389"
         tools:layoutManager="GridLayoutManager"
-        tools:spanCount="2" >
+        tools:spanCount="2">
 
     </android.support.v7.widget.RecyclerView>
 
