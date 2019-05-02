@@ -111,17 +111,17 @@ public class Camera extends AppCompatActivity {
             }
         });
 
-        YOUR_KEY = "product_key";
 
-        btnGallery = findViewById( R.id.btnGallery );
-        btnGallery.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Camera.this, Gallery.class);
-                intent.putExtra(YOUR_KEY, btnGallery.getText().toString());
-                startActivity(intent);
-            }
-        });
+//        YOUR_KEY = "product_key";
+//        btnGallery = findViewById( R.id.btnGallery );
+//        btnGallery.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Camera.this, Gallery.class);
+//                intent.putExtra(YOUR_KEY, btnGallery.getText().toString());
+//                startActivity(intent);
+//            }
+//        });
 
     }
 
