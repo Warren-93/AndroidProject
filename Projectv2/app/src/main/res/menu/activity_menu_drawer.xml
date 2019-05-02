@@ -16,21 +16,15 @@
             android:title="Gallery" />
 
         <item
-            android:id="@+id/nav_contactUs"
+            android:id="@+id/nav_location"
             android:icon="@drawable/ic_location_on_black_24dp"
-            android:title="Contact Us" />
+            android:title="Location" />
 
         <item
-            android:id="@+id/nav_basket"
+            android:id="@+id/nav_camera"
             android:icon="@drawable/ic_shopping_basket_black_24dp"
-            android:title="Basket" />
-
-
-        <!--<item-->
-            <!--android:id="@+id/nav_send"-->
-            <!--android:icon="@drawable/ic_menu_send"-->
-            <!--android:title="Messenger" />-->
-
+            android:title="Camera" />
+        
     </group>
 
     <item
