@@ -50,6 +50,5 @@ public class Image extends ImageArrayList {
         return galleryImage;
     }
 
-
 }
 

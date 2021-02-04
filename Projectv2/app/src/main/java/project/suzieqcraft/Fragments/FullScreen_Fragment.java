@@ -12,14 +12,14 @@ import android.support.v7.widget.SnapHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 
 import project.suzieqcraft.Adapters.FullscreenAdapter;
 import project.suzieqcraft.Model.Image;
 import project.suzieqcraft.R;
-import project.suzieqcraft.View.Gallery;
 
 import static project.suzieqcraft.View.Gallery.imageList;
 
